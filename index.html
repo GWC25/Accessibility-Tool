@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistive Technology Guide — Weston College</title>
+<meta name="description" content="A searchable, accessible guide to assistive technology on Windows, iPad, and Microsoft 365. Part of the Learning Without Barriers approach at Weston College.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== THEME TOKENS ===== */
+  :root {
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --surface-2: #F3F2EE;
+    --border: #E2E0D8;
+    --border-strong: #C5C3BA;
+    --text-primary: #1A1916;
+    --text-secondary: #5C5A54;
+    --text-muted: #8A8880;
+    --accent: #0F6E56;
+    --accent-light: #E1F5EE;
+    --accent-mid: #1D9E75;
+    --accent-text: #085041;
+    --focus: #185FA5;
+    --tag-vision: #E6F1FB;
+    --tag-vision-text: #0C447C;
+    --tag-hearing: #EEEDFE;
+    --tag-hearing-text: #3C3489;
+    --tag-motor: #FAEEDA;
+    --tag-motor-text: #633806;
+    --tag-cognitive: #EAF3DE;
+    --tag-cognitive-text: #27500A;
+    --tag-writing: #FBEAF0;
+    --tag-writing-text: #72243E;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06);
+    --font-body: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
+    --font-ui: 'Inter', 'Segoe UI', sans-serif;
+    --font-size-base: 17px;
+    --line-height: 1.75;
+    --spacing: 1.2;
+  }
+
+  /* HIGH CONTRAST */
+  [data-theme="high-contrast"] {
+    --bg: #000000;
+    --surface: #0A0A0A;
+    --surface-2: #1A1A1A;
+    --border: #666666;
+    --border-strong: #AAAAAA;
+    --text-primary: #FFFFFF;
+    --text-secondary: #DDDDDD;
+    --text-muted: #BBBBBB;
+    --accent: #00FF99;
+    --accent-light: #003322;
+    --accent-mid: #00CC77;
+    --accent-text: #00FF99;
+    --focus: #FFFF00;
+    --tag-vision: #001133;
+    --tag-vision-text: #99CCFF;
+    --tag-hearing: #110033;
+    --tag-hearing-text: #CC99FF;
+    --tag-motor: #221100;
+    --tag-motor-text: #FFCC66;
+    --tag-cognitive: #001100;
+    --tag-cognitive-text: #88FF88;
+    --tag-writing: #220011;
+    --tag-writing-text: #FF99BB;
+  }
+
+  /* WARM / SEPIA */
+  [data-theme="warm"] {
+    --bg: #F8F4EC;
+    --surface: #FDFAF3;
+    --surface-2: #F0EAD8;
+    --border: #D9CEB5;
+    --border-strong: #B8A988;
+    --text-primary: #2C1E0A;
+    --text-secondary: #5C4A2A;
+    --text-muted: #8A7050;
+    --accent: #6B4A1A;
+    --accent-light: #F0E8D0;
+    --accent-mid: #8B6030;
+    --accent-text: #4A2E08;
+    --focus: #1A3A8A;
+  }
+
+  /* DARK */
+  [data-theme="dark"] {
+    --bg: #141412;
+    --surface: #1E1D1A;
+    --surface-2: #2A2926;
+    --border: #3A3936;
+    --border-strong: #555450;
+    --text-primary: #F0EFE8;
+    --text-secondary: #B8B6AE;
+    --text-muted: #888680;
+    --accent: #1D9E75;
+    --accent-light: #0A2E22;
+    --accent-mid: #28C492;
+    --accent-text: #5DCAA5;
+    --focus: #4A9EDD;
+    --tag-vision: #0C2240;
+    --tag-vision-text: #85B7EB;
+    --tag-hearing: #1C1640;
+    --tag-hearing-text: #AFA9EC;
+    --tag-motor: #2A1E08;
+    --tag-motor-text: #FAC775;
+    --tag-cognitive: #0E2008;
+    --tag-cognitive-text: #97C459;
+    --tag-writing: #200C18;
+    --tag-writing-text: #ED93B1;
+  }
+
+  /* ===== RESET ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: var(--line-height);
+    transition: background 0.2s, color 0.2s;
+    min-height: 100vh;
+  }
+
+  /* ===== SKIP LINK ===== */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 1rem; }
+
+  /* ===== FOCUS STYLES ===== */
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: var(--radius);
+  }
+
+  /* ===== SCREEN READER ONLY ===== */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ===== LAYOUT ===== */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .site-logo {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .header-search {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+
+  .header-search input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 100px;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+
+  .header-search input::placeholder { color: var(--text-muted); }
+
+  .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    width: 18px;
+    height: 18px;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .icon-btn {
+    background: none;
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 0.45rem 0.75rem;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+
+  .icon-btn:hover { background: var(--surface-2); color: var(--text-primary); }
+  .icon-btn:active { transform: scale(0.97); }
+  .icon-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* ===== SETTINGS PANEL ===== */
+  .settings-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 200;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .settings-overlay.open { display: flex; }
+
+  .settings-panel {
+    background: var(--surface);
+    width: min(420px, 100vw);
+    height: 100vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    border-left: 1px solid var(--border);
+    position: relative;
+  }
+
+  .settings-panel h2 {
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .settings-tagline {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .settings-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.25rem;
+    border-radius: var(--radius);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .settings-close:hover { color: var(--text-primary); }
+
+  .setting-group {
+    margin-bottom: 1.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .setting-group label,
+  .setting-group-label {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .setting-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .setting-row label {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    text-transform: none;
+    letter-spacing: 0;
+    flex: 1;
+  }
+
+  .setting-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .btn-choice {
+    background: var(--surface-2);
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    padding: 0.35rem 0.85rem;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-choice:hover { border-color: var(--accent-mid); color: var(--accent-text); }
+
+  .btn-choice.active {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+  }
+
+  .range-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .range-row input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+  }
+
+  .range-value {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 2.5rem;
+    text-align: right;
+  }
+
+  /* TOGGLE */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border-strong);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    left: 3px; top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  .toggle-switch input:checked + .toggle-slider { background: var(--accent); }
+  .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+  .toggle-switch input:focus-visible + .toggle-slider { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  /* ===== MAIN ===== */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  /* ===== HERO BANNER ===== */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 {
+    font-family: var(--font-ui);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .lwb-badge {
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    text-align: center;
+    min-width: 150px;
+  }
+
+  .lwb-badge-label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-text);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .lwb-badge-title {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-text);
+    line-height: 1.3;
+  }
+
+  /* ===== PLATFORM TABS ===== */
+  .platform-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .platform-tab {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    padding: 0.5rem 1.25rem;
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .platform-tab:hover { border-color: var(--accent-mid); color: var(--text-primary); }
+
+  .platform-tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ===== CATEGORY FILTERS ===== */
+  .filter-bar {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-right: 0.25rem;
+  }
+
+  .filter-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.25rem 0.75rem;
+    font-family: var(--font-ui);
+    font-size: 0.775rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .filter-chip.cat-vision { color: var(--tag-vision-text); border-color: var(--tag-vision-text); }
+  .filter-chip.cat-vision.active, .filter-chip.cat-vision:hover { background: var(--tag-vision); }
+  .filter-chip.cat-hearing { color: var(--tag-hearing-text); border-color: var(--tag-hearing-text); }
+  .filter-chip.cat-hearing.active, .filter-chip.cat-hearing:hover { background: var(--tag-hearing); }
+  .filter-chip.cat-motor { color: var(--tag-motor-text); border-color: var(--tag-motor-text); }
+  .filter-chip.cat-motor.active, .filter-chip.cat-motor:hover { background: var(--tag-motor); }
+  .filter-chip.cat-cognitive { color: var(--tag-cognitive-text); border-color: var(--tag-cognitive-text); }
+  .filter-chip.cat-cognitive.active, .filter-chip.cat-cognitive:hover { background: var(--tag-cognitive); }
+  .filter-chip.cat-writing { color: var(--tag-writing-text); border-color: var(--tag-writing-text); }
+  .filter-chip.cat-writing.active, .filter-chip.cat-writing:hover { background: var(--tag-writing); }
+  .filter-chip.cat-all { color: var(--text-secondary); }
+  .filter-chip.cat-all.active { background: var(--surface-2); color: var(--text-primary); font-weight: 600; }
+
+  /* ===== TOOL GRID ===== */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .tool-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow); }
+
+  .tool-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .tool-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent-text);
+  }
+
+  .tool-icon svg { width: 22px; height: 22px; }
+
+  .tool-name {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .tool-shortcut {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  kbd {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+  }
+
+  .tool-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .cat-tag {
+    border-radius: 100px;
+    padding: 0.15rem 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .cat-tag.vision { background: var(--tag-vision); color: var(--tag-vision-text); }
+  .cat-tag.hearing { background: var(--tag-hearing); color: var(--tag-hearing-text); }
+  .cat-tag.motor { background: var(--tag-motor); color: var(--tag-motor-text); }
+  .cat-tag.cognitive { background: var(--tag-cognitive); color: var(--tag-cognitive-text); }
+  .cat-tag.writing { background: var(--tag-writing); color: var(--tag-writing-text); }
+
+  .tool-where {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .tool-where svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .tool-card-footer {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+  }
+
+  .yt-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font-family: var(--font-ui);
+    font-size: 0.775rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .yt-btn:hover { background: #FF000010; border-color: #CC0000; color: #CC0000; }
+  .yt-btn svg { width: 14px; height: 14px; }
+
+  .lwb-pill {
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 0.15rem 0.55rem;
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--accent-text);
+    white-space: nowrap;
+  }
+
+  /* ===== NO RESULTS ===== */
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  /* ===== RESULTS COUNT ===== */
+  .results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .results-count {
+    font-family: var(--font-ui);
+    font-size: 0.825rem;
+    color: var(--text-muted);
+  }
+
+  .speak-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.35rem 0.75rem;
+    font-family: var(--font-ui);
+    font-size: 0.775rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.15s;
+  }
+  .speak-btn:hover { background: var(--surface-2); }
+  .speak-btn svg { width: 14px; height: 14px; }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+  }
+
+  .site-footer a { color: var(--accent-text); }
+
+  /* ===== READ ALOUD INDICATOR ===== */
+  .speaking-indicator {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.6rem 1.1rem;
+    border-radius: 100px;
+    font-family: var(--font-ui);
+    font-size: 0.825rem;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 300;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .speaking-indicator.visible { display: flex; }
+  .speaking-indicator button {
+    background: rgba(255,255,255,0.25);
+    border: none;
+    border-radius: 100px;
+    padding: 0.2rem 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    main { padding: 1.25rem 1rem 3rem; }
+    .hero { grid-template-columns: 1fr; }
+    .lwb-badge { display: none; }
+    .site-header { padding: 1rem; }
+    .header-inner { gap: 0.75rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== DYSLEXIC FONT ===== */
+  [data-font="dyslexic"] body,
+  [data-font="dyslexic"] .tool-desc,
+  [data-font="dyslexic"] .tool-name,
+  [data-font="dyslexic"] p {
+    font-family: 'Comic Sans MS', 'OpenDyslexic', 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.04em;
+    word-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="#" class="site-logo" aria-label="Assistive Technology Guide — Weston College home">AT Guide</a>
+    <div class="header-search" role="search">
+      <label for="search-input" class="sr-only">Search for tools, features, or needs</label>
+      <svg class="search-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" id="search-input" placeholder="Search tools, e.g. dyslexia, captions, zoom…" autocomplete="off" aria-label="Search tools">
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="read-page-btn" aria-label="Read page aloud">
+        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        Read aloud
+      </button>
+      <button class="icon-btn" id="settings-btn" aria-label="Open accessibility settings" aria-controls="settings-overlay" aria-expanded="false">
+        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== SETTINGS PANEL ===== -->
+<div class="settings-overlay" id="settings-overlay" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+  <div class="settings-panel" role="document">
+    <button class="settings-close" id="settings-close" aria-label="Close settings">✕</button>
+    <h2 id="settings-title">Your preferences</h2>
+    <p class="settings-tagline">Settings are saved to your device and remembered next time.</p>
+
+    <div class="setting-group">
+      <span class="setting-group-label" id="theme-label">Colour scheme</span>
+      <div class="btn-group" role="group" aria-labelledby="theme-label">
+        <button class="btn-choice active" data-setting="theme" data-value="default">Default</button>
+        <button class="btn-choice" data-setting="theme" data-value="warm">Warm / sepia</button>
+        <button class="btn-choice" data-setting="theme" data-value="dark">Dark</button>
+        <button class="btn-choice" data-setting="theme" data-value="high-contrast">High contrast</button>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <span class="setting-group-label" id="font-label">Font type</span>
+      <div class="btn-group" role="group" aria-labelledby="font-label">
+        <button class="btn-choice active" data-setting="font" data-value="default">Atkinson (accessible)</button>
+        <button class="btn-choice" data-setting="font" data-value="dyslexic">Dyslexia-friendly</button>
+        <button class="btn-choice" data-setting="font" data-value="serif">Serif</button>
+        <button class="btn-choice" data-setting="font" data-value="mono">Monospace</button>
+      </div>
+      <p class="setting-description">Atkinson Hyperlegible is designed for low vision and reading difficulty. The dyslexia-friendly option adds more letter spacing.</p>
+    </div>
+
+    <div class="setting-group">
+      <label for="font-size-range" class="setting-group-label">Text size</label>
+      <div class="range-row">
+        <span style="font-size:0.8rem;color:var(--text-muted)">A</span>
+        <input type="range" id="font-size-range" min="14" max="24" value="17" step="1" aria-valuemin="14" aria-valuemax="24" aria-valuenow="17">
+        <span style="font-size:1.1rem;color:var(--text-muted)">A</span>
+        <span class="range-value" id="font-size-display" aria-live="polite">17px</span>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <label for="line-height-range" class="setting-group-label">Line spacing</label>
+      <div class="range-row">
+        <input type="range" id="line-height-range" min="1.4" max="2.4" value="1.75" step="0.05" aria-valuemin="1.4" aria-valuemax="2.4" aria-valuenow="1.75">
+        <span class="range-value" id="line-height-display" aria-live="polite">1.75</span>
+      </div>
+      <p class="setting-description">More spacing can help dyslexic readers and those with visual fatigue.</p>
+    </div>
+
+    <div class="setting-group">
+      <label for="letter-spacing-range" class="setting-group-label">Letter spacing</label>
+      <div class="range-row">
+        <input type="range" id="letter-spacing-range" min="0" max="0.12" value="0" step="0.01" aria-valuemin="0" aria-valuemax="0.12" aria-valuenow="0">
+        <span class="range-value" id="letter-spacing-display" aria-live="polite">0em</span>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <div class="setting-row">
+        <label for="motion-toggle">Reduce motion</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="motion-toggle" role="switch" aria-checked="false">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <p class="setting-description">Disables animations and transitions throughout the page.</p>
+
+      <div class="setting-row" style="margin-top:0.75rem">
+        <label for="focus-toggle">Enhanced focus outlines</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="focus-toggle" role="switch" aria-checked="false">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <p class="setting-description">Makes keyboard focus indicators thicker and more visible.</p>
+
+      <div class="setting-row" style="margin-top:0.75rem">
+        <label for="underline-toggle">Underline all links</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="underline-toggle" role="switch" aria-checked="false">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <span class="setting-group-label">Read aloud voice</span>
+      <div style="margin-bottom:0.5rem">
+        <label for="voice-select" class="sr-only">Select voice</label>
+        <select id="voice-select" style="width:100%;padding:0.5rem;border-radius:var(--radius);border:1px solid var(--border-strong);background:var(--bg);color:var(--text-primary);font-family:var(--font-body);font-size:0.875rem;">
+          <option>Loading voices…</option>
+        </select>
+      </div>
+      <label for="speech-rate-range" class="setting-group-label" style="font-size:0.75rem;margin-top:0.5rem">Reading speed</label>
+      <div class="range-row">
+        <input type="range" id="speech-rate-range" min="0.5" max="2" value="1" step="0.1" aria-valuemin="0.5" aria-valuemax="2" aria-valuenow="1">
+        <span class="range-value" id="speech-rate-display" aria-live="polite">1×</span>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <button class="btn-choice" id="reset-settings" style="width:100%;justify-content:center;border-radius:var(--radius);">Reset all to defaults</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<main id="main-content">
+  <h2 class="sr-only">Assistive Technology Guide — searchable tool directory</h2>
+
+  <!-- HERO -->
+  <div class="hero" role="region" aria-label="About this guide">
+    <div>
+      <p class="hero-eyebrow">Weston College · Digital Inclusion</p>
+      <h1>Assistive technology, built in and ready</h1>
+      <p>Every tool on this page is free, already on your device, and works right now. No extra software. No referral needed. These tools support every learner — not just those with a recorded need.</p>
+    </div>
+    <div class="lwb-badge" aria-label="Part of Learning Without Barriers">
+      <span class="lwb-badge-label">Part of</span>
+      <span class="lwb-badge-title">Learning Without Barriers</span>
+    </div>
+  </div>
+
+  <!-- PLATFORM TABS -->
+  <div role="tablist" class="platform-nav" aria-label="Select device platform">
+    <button class="platform-tab active" role="tab" aria-selected="true" data-platform="all" aria-controls="tools-section">
+      <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8,21 12,17 16,21"/></svg>
+      All platforms
+    </button>
+    <button class="platform-tab" role="tab" aria-selected="false" data-platform="windows" aria-controls="tools-section">
+      <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0V3.45zm10.949-1.49L24 0v11.4H10.949V1.959zM0 12.6h9.75v9.451L0 20.699V12.6zm10.949.001H24V24l-12.9-1.801V12.6z"/></svg>
+      Windows / Dell
+    </button>
+    <button class="platform-tab" role="tab" aria-selected="false" data-platform="ipad" aria-controls="tools-section">
+      <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg>
+      iPad
+    </button>
+    <button class="platform-tab" role="tab" aria-selected="false" data-platform="m365" aria-controls="tools-section">
+      <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Microsoft 365
+    </button>
+  </div>
+
+  <!-- CATEGORY FILTERS -->
+  <div class="filter-bar" role="group" aria-label="Filter by need">
+    <span class="filter-label" aria-hidden="true">Filter:</span>
+    <button class="filter-chip cat-all active" data-cat="all">All needs</button>
+    <button class="filter-chip cat-vision" data-cat="vision">👁 Vision</button>
+    <button class="filter-chip cat-hearing" data-cat="hearing">👂 Hearing</button>
+    <button class="filter-chip cat-motor" data-cat="motor">✋ Motor / mobility</button>
+    <button class="filter-chip cat-cognitive" data-cat="cognitive">🧠 Focus / cognitive</button>
+    <button class="filter-chip cat-writing" data-cat="writing">✍️ Writing / language</button>
+  </div>
+
+  <!-- RESULTS BAR -->
+  <div class="results-bar" id="results-section" aria-live="polite" aria-atomic="true">
+    <span class="results-count" id="results-count">Showing all tools</span>
+    <button class="speak-btn" id="read-results-btn" aria-label="Read visible tool names aloud">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      Read results
+    </button>
+  </div>
+
+  <!-- TOOLS GRID -->
+  <div class="tools-grid" id="tools-section" role="list" aria-label="Assistive technology tools">
+  </div>
+</main>
+
+<!-- SPEAKING INDICATOR -->
+<div class="speaking-indicator" id="speaking-indicator" aria-live="assertive">
+  <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+  Reading aloud…
+  <button onclick="stopSpeaking()" aria-label="Stop reading">Stop</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>Part of the <strong>Learning Without Barriers</strong> initiative · Weston College Digital Pedagogy · WCAG 2.2 AA compliant</p>
+  <p style="margin-top:0.4rem"><a href="https://www.microsoft.com/en-us/windows/accessibility-features" target="_blank" rel="noopener">Microsoft Accessibility</a> · <a href="https://support.apple.com/guide/ipad/get-started-with-accessibility-features-ipad9a2465f9/ipados" target="_blank" rel="noopener">Apple Accessibility</a> · <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener">WCAG 2.2</a></p>
+</footer>
+
+<script>
+// ===== TOOL DATA =====
+const TOOLS = [
+  // WINDOWS VISION
+  { id: 'narrator', name: 'Narrator', platform: 'windows', cats: ['vision'],
+    desc: 'Reads everything on screen aloud — menus, documents, websites. The built-in Windows screen reader, useful for blind or visually impaired users and those with dyslexia or reading fatigue.',
+    where: 'Settings → Accessibility → Narrator', shortcut: 'Ctrl + Win + Enter',
+    yt: 'Windows Narrator screen reader tutorial',
+    lwb: true, icon: 'speaker' },
+
+  { id: 'magnifier', name: 'Magnifier', platform: 'windows', cats: ['vision'],
+    desc: 'Enlarges part or all of the screen. Works in full-screen, lens, or docked mode. Useful for low vision, reading small print, or projected classroom demonstrations.',
+    where: 'Settings → Accessibility → Magnifier', shortcut: 'Win + Plus (+)',
+    yt: 'Windows Magnifier accessibility tutorial',
+    lwb: false, icon: 'zoom' },
+
+  { id: 'text-size', name: 'Text size and display scaling', platform: 'windows', cats: ['vision'],
+    desc: 'Makes text bigger across all apps without changing the page layout. Adjust with a slider — works instantly without restarting.',
+    where: 'Settings → Accessibility → Text size',
+    yt: 'Windows 11 text size display scaling',
+    lwb: false, icon: 'type' },
+
+  { id: 'contrast-themes', name: 'Contrast themes', platform: 'windows', cats: ['vision', 'cognitive'],
+    desc: 'High-contrast colour modes that make text and interface elements much easier to distinguish. Choose from four built-in themes or customise your own.',
+    where: 'Settings → Accessibility → Contrast themes', shortcut: 'Left Alt + Left Shift + PrtScn',
+    yt: 'Windows high contrast themes accessibility',
+    lwb: false, icon: 'contrast' },
+
+  { id: 'colour-filters', name: 'Colour filters', platform: 'windows', cats: ['vision'],
+    desc: 'Adjusts the display for different types of colour blindness — including red/green, blue/yellow, and full greyscale modes.',
+    where: 'Settings → Accessibility → Colour filters', shortcut: 'Win + Ctrl + C',
+    yt: 'Windows colour filters colour blindness',
+    lwb: true, icon: 'palette' },
+
+  // WINDOWS HEARING
+  { id: 'live-captions-win', name: 'Live Captions', platform: 'windows', cats: ['hearing'],
+    desc: 'Automatically converts any speech on your device — from video, audio, meetings, or calls — into on-screen text in real time. Works offline, privately, on your device.',
+    where: 'Settings → Accessibility → Captions', shortcut: 'Win + Ctrl + L',
+    yt: 'Windows 11 Live Captions tutorial',
+    lwb: true, icon: 'captions' },
+
+  { id: 'mono-audio', name: 'Mono audio', platform: 'windows', cats: ['hearing'],
+    desc: 'Combines stereo left and right audio channels into a single channel. Essential for users who are deaf or have hearing loss in one ear.',
+    where: 'Settings → Accessibility → Audio',
+    yt: 'Windows mono audio hearing accessibility',
+    lwb: false, icon: 'headphones' },
+
+  { id: 'visual-alerts', name: 'Visual alerts', platform: 'windows', cats: ['hearing'],
+    desc: 'Replaces sound alerts with visual flashes — the screen or a specific window flashes instead of playing a sound.',
+    where: 'Settings → Accessibility → Audio',
+    yt: 'Windows visual alerts sounds accessibility',
+    lwb: false, icon: 'bell' },
+
+  // WINDOWS MOTOR
+  { id: 'voice-access', name: 'Voice Access', platform: 'windows', cats: ['motor', 'writing'],
+    desc: 'Full voice control of your whole PC — open apps, navigate menus, click buttons, and dictate text using just your voice. No mouse or keyboard needed.',
+    where: 'Settings → Accessibility → Speech',
+    yt: 'Windows Voice Access full PC control tutorial',
+    lwb: true, icon: 'mic' },
+
+  { id: 'voice-typing-win', name: 'Voice Typing', platform: 'windows', cats: ['motor', 'writing'],
+    desc: 'Speak to type in any text field, email, or document. Accurate speech-to-text with automatic punctuation. Works in any app.',
+    where: 'Any text field', shortcut: 'Win + H',
+    yt: 'Windows Voice Typing dictation tutorial',
+    lwb: false, icon: 'mic' },
+
+  { id: 'on-screen-keyboard', name: 'On-screen keyboard', platform: 'windows', cats: ['motor'],
+    desc: 'A full keyboard displayed on screen, controlled by mouse, touch, or eye tracking. Includes word prediction and text completion.',
+    where: 'Settings → Accessibility → Keyboard',
+    yt: 'Windows on-screen keyboard tutorial',
+    lwb: false, icon: 'keyboard' },
+
+  { id: 'eye-control', name: 'Eye Control', platform: 'windows', cats: ['motor'],
+    desc: 'Control your PC entirely with eye movement using compatible eye-tracking hardware. Type, click, and scroll without hands.',
+    where: 'Settings → Accessibility → Eye Control',
+    yt: 'Windows Eye Control accessibility tutorial',
+    lwb: false, icon: 'eye' },
+
+  // WINDOWS COGNITIVE
+  { id: 'focus-mode', name: 'Focus and notification settings', platform: 'windows', cats: ['cognitive'],
+    desc: 'Reduce distracting pop-ups and notifications during study time. Set focus sessions with timers to manage attention and breaks.',
+    where: 'Settings → System → Focus',
+    yt: 'Windows Focus Sessions notification management',
+    lwb: false, icon: 'focus' },
+
+  // IPAD VISION
+  { id: 'voiceover', name: 'VoiceOver', platform: 'ipad', cats: ['vision'],
+    desc: 'iPad\'s built-in screen reader. Uses touch gestures to navigate — swipe to move between items, double-tap to select. Works across all apps.',
+    where: 'Settings → Accessibility → VoiceOver',
+    yt: 'iPad VoiceOver screen reader tutorial for beginners',
+    lwb: true, icon: 'speaker' },
+
+  { id: 'ipad-zoom', name: 'Zoom (iPad)', platform: 'ipad', cats: ['vision'],
+    desc: 'Magnifies any part of the iPad screen with a three-finger double-tap. Works in full screen or as a floating magnifier window.',
+    where: 'Settings → Accessibility → Zoom',
+    yt: 'iPad Zoom magnification accessibility tutorial',
+    lwb: false, icon: 'zoom' },
+
+  { id: 'ipad-magnifier', name: 'Magnifier camera', platform: 'ipad', cats: ['vision'],
+    desc: 'Uses the iPad camera like a magnifying glass for real-world text — menus, whiteboards, printed handouts. Can freeze the image and adjust contrast.',
+    where: 'Settings → Accessibility → Magnifier',
+    yt: 'iPad Magnifier camera tool accessibility',
+    lwb: false, icon: 'camera' },
+
+  { id: 'ipad-display', name: 'Display and text size (iPad)', platform: 'ipad', cats: ['vision', 'cognitive'],
+    desc: 'Adjust contrast, reduce white point, increase text size, and enable bold text. Works globally across all apps.',
+    where: 'Settings → Accessibility → Display & Text Size',
+    yt: 'iPad display text size accessibility settings',
+    lwb: false, icon: 'type' },
+
+  // IPAD HEARING
+  { id: 'ipad-live-captions', name: 'Live Captions (iPad)', platform: 'ipad', cats: ['hearing'],
+    desc: 'Real-time captions for anything on screen — video, audio, FaceTime, or conversations. Text appears clearly across the top of the screen.',
+    where: 'Settings → Accessibility → Live Captions',
+    yt: 'iPad Live Captions tutorial deaf hard of hearing',
+    lwb: true, icon: 'captions' },
+
+  { id: 'sound-recognition', name: 'Sound Recognition', platform: 'ipad', cats: ['hearing'],
+    desc: 'Alerts you to important sounds — doorbells, alarms, sirens, baby crying — by sending a notification. Useful for d/Deaf users or when headphones are in.',
+    where: 'Settings → Accessibility → Sound Recognition',
+    yt: 'iPad Sound Recognition accessibility tutorial',
+    lwb: false, icon: 'bell' },
+
+  // IPAD MOTOR
+  { id: 'assistive-touch', name: 'AssistiveTouch', platform: 'ipad', cats: ['motor'],
+    desc: 'Creates a virtual button on screen that can replace physical button presses. Customise gestures for single or multi-finger interactions.',
+    where: 'Settings → Accessibility → Touch → AssistiveTouch',
+    yt: 'iPad AssistiveTouch tutorial motor accessibility',
+    lwb: false, icon: 'touch' },
+
+  { id: 'switch-control', name: 'Switch Control', platform: 'ipad', cats: ['motor'],
+    desc: 'Navigate iPad using external switches, buttons, or adapted hardware. Enables full device use for people with very limited hand mobility.',
+    where: 'Settings → Accessibility → Switch Control',
+    yt: 'iPad Switch Control accessibility tutorial',
+    lwb: false, icon: 'switch' },
+
+  { id: 'ipad-voice-control', name: 'Voice Control (iPad)', platform: 'ipad', cats: ['motor', 'writing'],
+    desc: 'Control iPad entirely by voice — navigate, tap, swipe, dictate text. Displays numbered labels on screen elements so you can say "tap 3" to act.',
+    where: 'Settings → Accessibility → Voice Control',
+    yt: 'iPad Voice Control tutorial accessibility',
+    lwb: true, icon: 'mic' },
+
+  // IPAD COGNITIVE
+  { id: 'guided-access', name: 'Guided Access', platform: 'ipad', cats: ['cognitive'],
+    desc: 'Locks the iPad into a single app. You can also disable specific areas of the screen. Ideal for exams, focus sessions, or reducing distraction for SEND learners.',
+    where: 'Settings → Accessibility → Guided Access', shortcut: 'Triple-click top/home button',
+    yt: 'iPad Guided Access exam focus tutorial',
+    lwb: false, icon: 'lock' },
+
+  { id: 'spoken-content', name: 'Spoken Content', platform: 'ipad', cats: ['vision', 'writing', 'cognitive'],
+    desc: 'Reads selected text aloud, or reads the entire screen with a two-finger swipe down. Controls appear over the text as it reads.',
+    where: 'Settings → Accessibility → Spoken Content',
+    yt: 'iPad Spoken Content read aloud accessibility',
+    lwb: false, icon: 'speaker' },
+
+  { id: 'reduce-motion-ipad', name: 'Reduce Motion (iPad)', platform: 'ipad', cats: ['cognitive'],
+    desc: 'Reduces parallax animations and transitions. Helpful for users with vestibular disorders, motion sensitivity, or sensory processing differences.',
+    where: 'Settings → Accessibility → Motion',
+    yt: 'iPad Reduce Motion sensory accessibility',
+    lwb: false, icon: 'motion' },
+
+  // M365
+  { id: 'immersive-reader', name: 'Immersive Reader', platform: 'm365', cats: ['vision', 'writing', 'cognitive'],
+    desc: 'Reads text aloud with word highlighting, breaks words into syllables, adjusts spacing and column width, applies colour overlays. Available in Word, OneNote, Teams, Forms, and Outlook. Stigma-free — available to every learner at induction.',
+    where: 'View → Immersive Reader (in Word, OneNote, Teams)',
+    yt: 'Microsoft Immersive Reader tutorial dyslexia reading',
+    lwb: true, icon: 'book' },
+
+  { id: 'read-aloud', name: 'Read Aloud', platform: 'm365', cats: ['vision', 'cognitive'],
+    desc: 'Reads documents, emails, and web pages aloud in Word, Outlook, and Edge. Highlights text as it reads. Adjust speed and voice.',
+    where: 'Review → Read Aloud (Word) · View → Read Aloud (Edge)',
+    yt: 'Microsoft Read Aloud Word Outlook tutorial',
+    lwb: false, icon: 'speaker' },
+
+  { id: 'dictation-m365', name: 'Dictation', platform: 'm365', cats: ['motor', 'writing'],
+    desc: 'Speak to write in Word, Outlook, and OneNote. Includes auto-punctuation and voice commands for editing. Good for anyone who finds typing difficult or slow.',
+    where: 'Home → Dictate (Word, Outlook, OneNote)',
+    yt: 'Microsoft 365 Dictation speech to text tutorial',
+    lwb: true, icon: 'mic' },
+
+  { id: 'ms-editor', name: 'Microsoft Editor', platform: 'm365', cats: ['writing', 'cognitive'],
+    desc: 'Grammar, spelling, clarity, and conciseness suggestions across Word, Outlook, and Edge. Supports inclusive language checking and rewrite suggestions.',
+    where: 'Home → Editor (Word) · Edge browser toolbar',
+    yt: 'Microsoft Editor tutorial writing grammar support',
+    lwb: false, icon: 'edit' },
+
+  { id: 'translator', name: 'Translator', platform: 'm365', cats: ['writing'],
+    desc: 'Translate documents, messages, and presentations into over 100 languages in real time. Built into Word, Outlook, PowerPoint, and Teams.',
+    where: 'Review → Translate (Word, PowerPoint)',
+    yt: 'Microsoft Translator 365 tutorial ESOL language',
+    lwb: true, icon: 'globe' },
+
+  { id: 'live-captions-teams', name: 'Live Captions and subtitles (Teams)', platform: 'm365', cats: ['hearing'],
+    desc: 'Real-time subtitles in Teams meetings, available in over 30 spoken languages. Spoken words appear as on-screen text instantly. Can be enabled by default for every meeting.',
+    where: 'Teams meeting → More options → Turn on live captions',
+    yt: 'Microsoft Teams Live Captions tutorial deaf hard of hearing',
+    lwb: true, icon: 'captions' },
+
+  { id: 'accessibility-checker', name: 'Accessibility Checker', platform: 'm365', cats: ['vision', 'cognitive'],
+    desc: 'Scans Word, PowerPoint, and Excel files for accessibility issues — missing alt text, poor colour contrast, unlabelled tables. A quick check before every upload is a QFT habit.',
+    where: 'Review → Check Accessibility (Word, PowerPoint, Excel)',
+    yt: 'Microsoft Accessibility Checker tutorial how to use',
+    lwb: true, icon: 'check' },
+
+  { id: 'reading-progress', name: 'Reading Progress (Teams)', platform: 'm365', cats: ['writing', 'cognitive'],
+    desc: 'Students record themselves reading aloud; the tool analyses fluency, accuracy, and pace. Gives private, low-stakes feedback without teacher monitoring in real time.',
+    where: 'Teams → Assignments → Add Reading Progress',
+    yt: 'Microsoft Teams Reading Progress tutorial',
+    lwb: false, icon: 'book' },
+
+  { id: 'presenter-coach', name: 'Presenter Coach (PowerPoint)', platform: 'm365', cats: ['cognitive', 'writing'],
+    desc: 'Real-time coaching on speaking pace, filler words, and slide reading during presentation rehearsal. Provides a detailed report afterwards.',
+    where: 'Slide Show → Rehearse with Coach (PowerPoint)',
+    yt: 'PowerPoint Presenter Coach tutorial presentation skills',
+    lwb: false, icon: 'presentation' },
+
+  { id: 'focus-inbox', name: 'Focused Inbox (Outlook)', platform: 'm365', cats: ['cognitive'],
+    desc: 'Separates important emails from newsletters and lower-priority messages. Reduces cognitive load when managing a high volume of communications.',
+    where: 'Outlook → View → Show Focused Inbox',
+    yt: 'Outlook Focused Inbox tutorial productivity',
+    lwb: false, icon: 'inbox' },
+];
+
+// ===== STATE =====
+let currentPlatform = 'all';
+let currentCat = 'all';
+let currentSearch = '';
+let speaking = false;
+let utterance = null;
+
+// ===== RENDER TOOLS =====
+function getIcon(type) {
+  const icons = {
+    speaker: '<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',
+    zoom: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>',
+    type: '<polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>',
+    contrast: '<circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/>',
+    palette: '<circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
+    captions: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 9h4"/><path d="M7 13h8"/>',
+    headphones: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',
+    bell: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
+    mic: '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>',
+    keyboard: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.001"/><path d="M10 8h.001"/><path d="M14 8h.001"/><path d="M18 8h.001"/><path d="M8 12h.001"/><path d="M12 12h.001"/><path d="M16 12h.001"/><path d="M7 16h10"/>',
+    eye: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+    focus: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    camera: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+    touch: '<path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>',
+    switch: '<rect x="2" y="9" width="20" height="6" rx="3"/><circle cx="16" cy="12" r="2"/>',
+    lock: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+    motion: '<path d="M5 3l14 9-14 9V3z"/>',
+    book: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+    edit: '<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>',
+    globe: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+    check: '<polyline points="20 6 9 17 4 12"/>',
+    presentation: '<path d="M2 3h20v13H2z"/><path d="M8 21l4-5 4 5"/><path d="M12 16v2"/>',
+    inbox: '<polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+  };
+  return icons[type] || icons.check;
+}
+
+function renderTools() {
+  const grid = document.getElementById('tools-section');
+  const search = currentSearch.toLowerCase();
+
+  const filtered = TOOLS.filter(t => {
+    if (currentPlatform !== 'all' && t.platform !== currentPlatform) return false;
+    if (currentCat !== 'all' && !t.cats.includes(currentCat)) return false;
+    if (search) {
+      const haystack = (t.name + ' ' + t.desc + ' ' + t.cats.join(' ') + ' ' + (t.where || '')).toLowerCase();
+      if (!haystack.includes(search)) return false;
+    }
+    return true;
+  });
+
+  const countEl = document.getElementById('results-count');
+  countEl.textContent = filtered.length === TOOLS.length
+    ? `Showing all ${TOOLS.length} tools`
+    : `${filtered.length} tool${filtered.length !== 1 ? 's' : ''} found`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results" role="status"><p>No tools match your search. Try different words or clear your filters.</p></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(t => {
+    const catTags = t.cats.map(c => `<span class="cat-tag ${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</span>`).join('');
+    const shortcutHtml = t.shortcut ? `<div class="tool-shortcut">Shortcut: <kbd>${t.shortcut}</kbd></div>` : '';
+    const lwbHtml = t.lwb ? '<span class="lwb-pill">Removes barriers</span>' : '';
+    const ytUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(t.yt);
+
+    return `<article class="tool-card" role="listitem" aria-label="${t.name}">
+      <div class="tool-card-header">
+        <div class="tool-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+            ${getIcon(t.icon)}
+          </svg>
+        </div>
+        <div>
+          <div class="tool-name">${t.name}</div>
+          ${shortcutHtml}
+        </div>
+      </div>
+      <p class="tool-desc">${t.desc}</p>
+      <div class="tool-tags" aria-label="Categories: ${t.cats.join(', ')}">${catTags}${lwbHtml}</div>
+      ${t.where ? `<div class="tool-where" aria-label="Where to find it">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        ${t.where}
+      </div>` : ''}
+      <div class="tool-card-footer">
+        <a href="${ytUrl}" target="_blank" rel="noopener noreferrer" class="yt-btn" aria-label="Search YouTube for ${t.name} tutorial (opens in new tab)">
+          <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.02V8.98l6.28 3.02-6.28 3.02z"/></svg>
+          Find a tutorial
+        </a>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+// ===== SEARCH =====
+document.getElementById('search-input').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  renderTools();
+});
+
+// ===== PLATFORM TABS =====
+document.querySelectorAll('.platform-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.platform-tab').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    currentPlatform = btn.dataset.platform;
+    renderTools();
+  });
+});
+
+// ===== CATEGORY FILTERS =====
+document.querySelectorAll('.filter-chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    renderTools();
+  });
+});
+
+// ===== SETTINGS PANEL =====
+const overlay = document.getElementById('settings-overlay');
+const settingsBtn = document.getElementById('settings-btn');
+const closeBtn = document.getElementById('settings-close');
+
+function openSettings() {
+  overlay.classList.add('open');
+  settingsBtn.setAttribute('aria-expanded', 'true');
+  closeBtn.focus();
+}
+function closeSettings() {
+  overlay.classList.remove('open');
+  settingsBtn.setAttribute('aria-expanded', 'false');
+  settingsBtn.focus();
+}
+
+settingsBtn.addEventListener('click', openSettings);
+closeBtn.addEventListener('click', closeSettings);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeSettings(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeSettings(); });
+
+// ===== SETTINGS LOGIC =====
+const root = document.documentElement;
+
+function applyTheme(val) {
+  root.dataset.theme = val === 'default' ? '' : val;
+  localStorage.setItem('at-theme', val);
+  document.querySelectorAll('[data-setting="theme"]').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === val);
+  });
+}
+
+function applyFont(val) {
+  const fonts = {
+    default: "'Atkinson Hyperlegible', 'Segoe UI', sans-serif",
+    dyslexic: "'Comic Sans MS', 'Helvetica Neue', sans-serif",
+    serif: "Georgia, 'Times New Roman', serif",
+    mono: "'Courier New', Courier, monospace"
+  };
+  root.style.setProperty('--font-body', fonts[val] || fonts.default);
+  localStorage.setItem('at-font', val);
+  document.querySelectorAll('[data-setting="font"]').forEach(b => {
+    b.classList.toggle('active', b.dataset.value === val);
+  });
+  if (val === 'dyslexic') {
+    root.style.setProperty('--line-height', '1.9');
+    document.getElementById('line-height-range').value = 1.9;
+    document.getElementById('line-height-display').textContent = '1.9';
+  }
+}
+
+document.querySelectorAll('[data-setting]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const setting = btn.dataset.setting;
+    const val = btn.dataset.value;
+    if (setting === 'theme') applyTheme(val);
+    if (setting === 'font') applyFont(val);
+  });
+});
+
+// Font size
+const fsRange = document.getElementById('font-size-range');
+const fsDisplay = document.getElementById('font-size-display');
+fsRange.addEventListener('input', () => {
+  const v = fsRange.value;
+  root.style.setProperty('--font-size-base', v + 'px');
+  fsDisplay.textContent = v + 'px';
+  fsRange.setAttribute('aria-valuenow', v);
+  localStorage.setItem('at-fontsize', v);
+});
+
+// Line height
+const lhRange = document.getElementById('line-height-range');
+const lhDisplay = document.getElementById('line-height-display');
+lhRange.addEventListener('input', () => {
+  const v = parseFloat(lhRange.value).toFixed(2);
+  root.style.setProperty('--line-height', v);
+  lhDisplay.textContent = v;
+  lhRange.setAttribute('aria-valuenow', v);
+  localStorage.setItem('at-lineheight', v);
+});
+
+// Letter spacing
+const lsRange = document.getElementById('letter-spacing-range');
+const lsDisplay = document.getElementById('letter-spacing-display');
+lsRange.addEventListener('input', () => {
+  const v = parseFloat(lsRange.value).toFixed(2);
+  document.body.style.letterSpacing = v + 'em';
+  lsDisplay.textContent = v + 'em';
+  lsRange.setAttribute('aria-valuenow', v);
+  localStorage.setItem('at-letterspacing', v);
+});
+
+// Reduce motion toggle
+const motionToggle = document.getElementById('motion-toggle');
+motionToggle.addEventListener('change', () => {
+  const on = motionToggle.checked;
+  motionToggle.setAttribute('aria-checked', on.toString());
+  if (on) {
+    const style = document.createElement('style');
+    style.id = 'reduce-motion-override';
+    style.textContent = '*, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }';
+    document.head.appendChild(style);
+  } else {
+    document.getElementById('reduce-motion-override')?.remove();
+  }
+  localStorage.setItem('at-reducemotion', on);
+});
+
+// Focus toggle
+const focusToggle = document.getElementById('focus-toggle');
+focusToggle.addEventListener('change', () => {
+  const on = focusToggle.checked;
+  focusToggle.setAttribute('aria-checked', on.toString());
+  if (on) {
+    const style = document.createElement('style');
+    style.id = 'focus-override';
+    style.textContent = ':focus-visible { outline: 4px solid var(--focus) !important; outline-offset: 4px !important; }';
+    document.head.appendChild(style);
+  } else {
+    document.getElementById('focus-override')?.remove();
+  }
+  localStorage.setItem('at-focus', on);
+});
+
+// Underline toggle
+const underlineToggle = document.getElementById('underline-toggle');
+underlineToggle.addEventListener('change', () => {
+  const on = underlineToggle.checked;
+  underlineToggle.setAttribute('aria-checked', on.toString());
+  if (on) {
+    const style = document.createElement('style');
+    style.id = 'underline-override';
+    style.textContent = 'a { text-decoration: underline !important; }';
+    document.head.appendChild(style);
+  } else {
+    document.getElementById('underline-override')?.remove();
+  }
+  localStorage.setItem('at-underlinks', on);
+});
+
+// Reset
+document.getElementById('reset-settings').addEventListener('click', () => {
+  localStorage.removeItem('at-theme');
+  localStorage.removeItem('at-font');
+  localStorage.removeItem('at-fontsize');
+  localStorage.removeItem('at-lineheight');
+  localStorage.removeItem('at-letterspacing');
+  localStorage.removeItem('at-reducemotion');
+  localStorage.removeItem('at-focus');
+  localStorage.removeItem('at-underlinks');
+  location.reload();
+});
+
+// ===== RESTORE SETTINGS =====
+function restoreSettings() {
+  const theme = localStorage.getItem('at-theme') || 'default';
+  const font = localStorage.getItem('at-font') || 'default';
+  const fs = localStorage.getItem('at-fontsize') || '17';
+  const lh = localStorage.getItem('at-lineheight') || '1.75';
+  const ls = localStorage.getItem('at-letterspacing') || '0';
+  const rm = localStorage.getItem('at-reducemotion') === 'true';
+  const foc = localStorage.getItem('at-focus') === 'true';
+  const ul = localStorage.getItem('at-underlinks') === 'true';
+
+  applyTheme(theme);
+  applyFont(font);
+  root.style.setProperty('--font-size-base', fs + 'px');
+  fsRange.value = fs;
+  fsDisplay.textContent = fs + 'px';
+  root.style.setProperty('--line-height', lh);
+  lhRange.value = lh;
+  lhDisplay.textContent = parseFloat(lh).toFixed(2);
+  document.body.style.letterSpacing = ls + 'em';
+  lsRange.value = ls;
+  lsDisplay.textContent = parseFloat(ls).toFixed(2) + 'em';
+
+  if (rm) { motionToggle.checked = true; motionToggle.setAttribute('aria-checked', 'true'); motionToggle.dispatchEvent(new Event('change')); }
+  if (foc) { focusToggle.checked = true; focusToggle.setAttribute('aria-checked', 'true'); focusToggle.dispatchEvent(new Event('change')); }
+  if (ul) { underlineToggle.checked = true; underlineToggle.setAttribute('aria-checked', 'true'); underlineToggle.dispatchEvent(new Event('change')); }
+}
+
+// ===== SPEECH =====
+const indicator = document.getElementById('speaking-indicator');
+
+function stopSpeaking() {
+  window.speechSynthesis.cancel();
+  speaking = false;
+  indicator.classList.remove('visible');
+}
+
+function speakText(text) {
+  if (!('speechSynthesis' in window)) {
+    alert('Your browser does not support text-to-speech. Please use your device\'s built-in screen reader instead.');
+    return;
+  }
+  stopSpeaking();
+  const rate = parseFloat(document.getElementById('speech-rate-range').value);
+  utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = rate;
+  const voices = window.speechSynthesis.getVoices();
+  const sel = document.getElementById('voice-select');
+  if (sel.selectedIndex >= 0 && voices[sel.selectedIndex]) {
+    utterance.voice = voices[sel.selectedIndex];
+  }
+  utterance.onend = () => { speaking = false; indicator.classList.remove('visible'); };
+  utterance.onerror = () => { speaking = false; indicator.classList.remove('visible'); };
+  window.speechSynthesis.speak(utterance);
+  speaking = true;
+  indicator.classList.add('visible');
+}
+
+// Read page
+document.getElementById('read-page-btn').addEventListener('click', () => {
+  if (speaking) { stopSpeaking(); return; }
+  const tools = document.querySelectorAll('.tool-card');
+  const toolText = Array.from(tools).map(el => {
+    const name = el.querySelector('.tool-name')?.textContent || '';
+    const desc = el.querySelector('.tool-desc')?.textContent || '';
+    return `${name}. ${desc}`;
+  }).join('. Next tool. ');
+  speakText('Assistive Technology Guide, Weston College. ' + toolText);
+});
+
+// Read results
+document.getElementById('read-results-btn').addEventListener('click', () => {
+  const names = Array.from(document.querySelectorAll('.tool-name')).map(el => el.textContent).join(', ');
+  speakText('Visible tools: ' + names);
+});
+
+// Speech rate display
+const srRange = document.getElementById('speech-rate-range');
+const srDisplay = document.getElementById('speech-rate-display');
+srRange.addEventListener('input', () => {
+  const v = parseFloat(srRange.value).toFixed(1);
+  srDisplay.textContent = v + '×';
+  srRange.setAttribute('aria-valuenow', v);
+});
+
+// Load voices
+function loadVoices() {
+  const voices = window.speechSynthesis.getVoices();
+  const sel = document.getElementById('voice-select');
+  if (voices.length) {
+    sel.innerHTML = voices.map((v, i) => `<option value="${i}">${v.name} (${v.lang})</option>`).join('');
+    const enVoice = voices.findIndex(v => v.lang.startsWith('en') && v.localService);
+    if (enVoice >= 0) sel.selectedIndex = enVoice;
+  }
+}
+window.speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
+
+// ===== OS DARK MODE =====
+if (!localStorage.getItem('at-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  applyTheme('dark');
+}
+
+// ===== OS REDUCED MOTION =====
+if (!localStorage.getItem('at-reducemotion') && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  motionToggle.checked = true;
+  motionToggle.setAttribute('aria-checked', 'true');
+  motionToggle.dispatchEvent(new Event('change'));
+}
+
+// ===== INIT =====
+restoreSettings();
+renderTools();
+</script>
+</body>
+</html>
