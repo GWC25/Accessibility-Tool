@@ -236,6 +236,16 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
 .speak-toast{position:fixed;bottom:1.25rem;right:1.25rem;background:var(--accent);color:#fff;padding:.55rem 1rem;border-radius:100px;font-family:var(--font-ui);font-size:.78rem;font-weight:600;display:none;align-items:center;gap:.5rem;z-index:400;max-width:min(360px,calc(100vw - 2rem))}
 .speak-toast.visible{display:flex}
 .speak-toast button{background:rgba(255,255,255,.25);border:none;border-radius:100px;padding:.2rem .55rem;color:#fff;cursor:pointer;font-size:.72rem;font-weight:600;font-family:var(--font-ui);white-space:nowrap}
+/* HERO LISTEN BUTTON */
+.hero-listen-btn { margin-top: 0.85rem; }
+/* READ MODE active state on cards */
+body.read-mode .tool-card { cursor: pointer; }
+body.read-mode .tool-card:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
+[data-theme="high-contrast"] body.read-mode .tool-card:hover { outline: 3px solid var(--focus); }
+.read-mode-banner { display: none; background: var(--accent); color: #fff; text-align: center; padding: 0.4rem 1rem; font-family: var(--font-ui); font-size: 0.775rem; font-weight: 600; position: sticky; top: 68px; z-index: 99; }
+body.read-mode .read-mode-banner { display: block; }
+/* LWB listen button */
+.lwb-listen-btn { margin-bottom: 1rem; }
 /* FOOTER */
 .site-footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-size:.78rem;color:var(--secondary);font-family:var(--font-ui)}
 .site-footer a{color:var(--accent-text);text-decoration:underline}
@@ -301,6 +311,10 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
 <div class="lwb-overlay" id="lwb-overlay" role="dialog" aria-modal="true" aria-labelledby="lwb-title">
   <div class="lwb-inner">
     <button class="lwb-close" id="lwb-close" aria-label="Close Learning Without Barriers panel">✕ Close</button>
+    <button class="speak-card-btn lwb-listen-btn" id="lwb-listen-btn" aria-label="Listen to Learning Without Barriers overview" style="margin-bottom:1rem">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      Listen to this page
+    </button>
     <p class="lwb-eyebrow">Weston College · Digital Inclusion</p>
     <h2 id="lwb-title">Learning Without Barriers</h2>
     <p class="lwb-subtitle">How we create the conditions for every learner to participate fully in digital learning, regardless of ability, language, background, connectivity, or prior experience.</p>
@@ -346,9 +360,9 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8,21 12,17 16,21"/></svg>
       </button>
     </div>
-    <button class="hbtn" id="speak-all-btn" aria-label="Read all visible tools aloud" aria-pressed="false">
+    <button class="hbtn" id="speak-all-btn" aria-label="Read mode — off. Activate to read cards on click" aria-pressed="false">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-      Read all
+      Read mode
     </button>
     <button class="hbtn" id="sett-open" aria-label="Open settings" aria-controls="sett" aria-expanded="false">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -356,6 +370,7 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
     </button>
   </div>
 </header>
+<div class="read-mode-banner" id="read-mode-banner" role="status" aria-live="polite">📢 Read mode on — click any card to hear it · double-click to open links · click Read mode again to exit</div>
 
 <main id="main-content">
   <h2 class="sr-only">Staff guide — assistive technology tools with full technical detail</h2>
@@ -365,7 +380,11 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
       <h1>Assistive technology — technical reference</h1>
       <p>Every tool here is free, already installed, and available to every learner. Includes keyboard shortcuts, exact menu paths, and Read&Write guidance. Show these tools at induction — not just to learners with a recorded need.</p>
     </div>
-    <a href="#" class="lwb-badge" id="lwb-open" aria-haspopup="dialog" aria-label="Open Learning Without Barriers overview">
+    <button class="speak-card-btn hero-listen-btn" id="hero-listen-btn" aria-label="Listen to introduction">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      Listen
+    </button>
+        <a href="#" class="lwb-badge" id="lwb-open" aria-haspopup="dialog" aria-label="Open Learning Without Barriers overview">
       <span class="lwb-badge-label">Part of</span>
       <span class="lwb-badge-title">Learning Without Barriers</span>
     </a>
@@ -515,6 +534,7 @@ function renderTools(){
     filtered.forEach(t=>{html+=cardHtml(t);});
   }
   grid.innerHTML=html;
+  if(typeof attachReadModeListeners === 'function') attachReadModeListeners();
 
   grid.querySelectorAll('.speak-card-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -545,35 +565,47 @@ document.querySelectorAll('.fchip').forEach(btn=>btn.addEventListener('click',()
   btn.classList.add('active');curCat=btn.dataset.c;renderTools();
 }));
 
-// SPEAK ALL
-document.getElementById('speak-all-btn').addEventListener('click',()=>{
-  if(globalSpeaking){stopAll();return;}
-  const cards=Array.from(document.querySelectorAll('.tool-card'));
-  if(!cards.length) return;
-  let i=0;
-  const sab=document.getElementById('speak-all-btn');
-  sab.classList.add('speaking');sab.setAttribute('aria-pressed','true');
-  globalSpeaking=true;
-  function next(){
-    if(!globalSpeaking||i>=cards.length){stopAll();return;}
-    const card=cards[i];
-    const name=card.querySelector('.card-name')?.textContent||'';
-    const desc=card.querySelector('.card-desc')?.textContent||'';
-    const where=card.querySelector('.card-where span')?.textContent||'';
-    let text=name+'. '+desc+(where?'. Where: '+where:'');
-    document.querySelectorAll('.tool-card.speaking-now').forEach(c=>c.classList.remove('speaking-now'));
-    card.classList.add('speaking-now');card.scrollIntoView({behavior:'smooth',block:'nearest'});
-    document.getElementById('toast-label').textContent=`Reading: ${name} (${i+1}/${cards.length})`;
-    document.getElementById('speak-toast').classList.add('visible');
-    const u=new SpeechSynthesisUtterance(text);
-    u.rate=parseFloat(document.getElementById('sr-r').value)||1;
-    const voices=window.speechSynthesis.getVoices();const sel=document.getElementById('vs');
-    if(sel.selectedIndex>=0&&voices[sel.selectedIndex]) u.voice=voices[sel.selectedIndex];
-    u.onend=u.onerror=()=>{card.classList.remove('speaking-now');i++;next();};
-    window.speechSynthesis.speak(u);
-  }
-  next();
-});
+// READ MODE TOGGLE
+let readModeActive = false;
+const sab = document.getElementById('speak-all-btn');
+
+function setReadMode(on) {
+  readModeActive = on;
+  document.body.classList.toggle('read-mode', on);
+  sab.setAttribute('aria-pressed', on.toString());
+  sab.setAttribute('aria-label', on
+    ? 'Read mode — on. Click again to exit'
+    : 'Read mode — off. Activate to read cards on click');
+  sab.innerHTML = on
+    ? `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Exit read mode`
+    : `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Read mode`;
+  if (!on) stopAll();
+}
+
+sab.addEventListener('click', () => setReadMode(!readModeActive));
+
+// Read-mode single-click on tool cards — attach after render
+function attachReadModeListeners() {
+  document.querySelectorAll('.tool-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (!readModeActive) return;
+      // Double-click = let links/buttons through normally
+      if (e.detail >= 2) return;
+      // Single click = read the card; prevent default only on non-button/link targets
+      const isInteractive = e.target.closest('a, button');
+      if (isInteractive) {
+        // If it's a button (speak/yt), block on first click and read instead
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const btn = card.querySelector('.speak-card-btn');
+      if (btn) {
+        if (btn.classList.contains('playing')) { stopAll(); return; }
+        btn.click();
+      }
+    });
+  });
+}
 
 // SETTINGS
 const settEl=document.getElementById('sett');
@@ -640,6 +672,30 @@ function restore(){
   if(ul){document.getElementById('ut').checked=true;document.getElementById('ut').setAttribute('aria-checked','true');document.getElementById('ut').dispatchEvent(new Event('change'));}
   if(view==='mobile') document.getElementById('view-mobile').click();
 }
+// HERO LISTEN
+document.getElementById('hero-listen-btn').addEventListener('click', function() {
+  if (this.classList.contains('playing')) { stopAll(); return; }
+  const h1 = document.querySelector('.hero h1')?.textContent || '';
+  const p = document.querySelector('.hero p')?.textContent || '';
+  speakText('Introduction. ' + h1 + '. ' + p, null, this, 'Reading introduction');
+});
+
+// LWB LISTEN
+document.getElementById('lwb-listen-btn').addEventListener('click', function() {
+  if (this.classList.contains('playing')) { stopAll(); return; }
+  const title = document.getElementById('lwb-title')?.textContent || '';
+  const subtitle = document.querySelector('.lwb-subtitle')?.textContent || '';
+  const vision = document.querySelector('.lwb-vision p')?.textContent || '';
+  const principles = Array.from(document.querySelectorAll('.lwb-p')).map(p => {
+    const num = p.querySelector('.lwb-pnum')?.textContent || '';
+    const title = p.querySelector('.lwb-ptitle')?.textContent || '';
+    const desc = p.querySelector('.lwb-pdesc')?.textContent || '';
+    return num + '. ' + title + '. ' + desc;
+  }).join('. ');
+  const text = title + '. ' + subtitle + '. Our vision: ' + vision + '. ' + principles;
+  speakText(text, null, this, 'Reading Learning Without Barriers');
+});
+
 restore();
 renderTools();
 </script>
