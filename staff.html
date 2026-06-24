@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Assistive Technology — Staff Guide · Weston College</title>
-<meta name="description" content="Technical staff guide to assistive technology on Windows, iPad, Microsoft 365, and Read&Write Gold. Includes keyboard shortcuts, feature detail, and pedagogical framing.">
+<meta name="description" content="Technical staff guide to assistive technology on Windows, iPad, Microsoft 365, and Read&Write. Includes keyboard shortcuts, feature detail, and pedagogical framing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -363,7 +363,7 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
     <div>
       <p class="hero-eyebrow">Weston College · Staff guide</p>
       <h1>Assistive technology — technical reference</h1>
-      <p>Every tool here is free, already installed, and available to every learner. Includes keyboard shortcuts, exact menu paths, and Read&Write Gold guidance. Show these tools at induction — not just to learners with a recorded need.</p>
+      <p>Every tool here is free, already installed, and available to every learner. Includes keyboard shortcuts, exact menu paths, and Read&Write guidance. Show these tools at induction — not just to learners with a recorded need.</p>
     </div>
     <a href="#" class="lwb-badge" id="lwb-open" aria-haspopup="dialog" aria-label="Open Learning Without Barriers overview">
       <span class="lwb-badge-label">Part of</span>
@@ -374,9 +374,10 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
   <div class="platform-nav" role="tablist" aria-label="Filter by platform">
     <button class="ptab active" role="tab" aria-selected="true" data-p="all">All platforms</button>
     <button class="ptab" role="tab" aria-selected="false" data-p="windows">Windows / Dell</button>
-    <button class="ptab" role="tab" aria-selected="false" data-p="ipad">iPad</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="ipad">iPad / iPadOS</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="android">Android</button>
     <button class="ptab" role="tab" aria-selected="false" data-p="m365">Microsoft 365</button>
-    <button class="ptab" role="tab" aria-selected="false" data-p="rw">Read&amp;Write Gold</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="rw">Read&amp;Write</button>
   </div>
 
   <div class="filter-bar" role="group" aria-label="Filter by need">
@@ -467,9 +468,9 @@ function cardHtml(t){
     <div class="card-where"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${t.staffWhere}</span></div>
     <div class="card-footer">
       <button class="speak-card-btn" data-name="${t.name}" aria-label="Read ${t.name} aloud">${playIcon()}</button>
-      <a href="${ytUrl}" target="_blank" rel="noopener noreferrer" class="yt-btn" aria-label="Search YouTube for ${t.name} tutorial (opens in new tab)">
+      <a href="${ytUrl}" target="_blank" rel="noopener noreferrer" class="yt-btn" aria-label="Watch a ${t.name} tutorial on YouTube (opens in new tab)">
         <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.02V8.98l6.28 3.02-6.28 3.02z"/></svg>
-        Find tutorial
+        ${t.name} on YouTube
       </a>
     </div>
   </article>`;
@@ -500,7 +501,8 @@ function renderTools(){
       {key:'windows',label:'Windows / Dell',icon:'💻',note:''},
       {key:'ipad',label:'iPad (iPadOS)',icon:'📱',note:''},
       {key:'m365',label:'Microsoft 365',icon:'📧',note:''},
-      {key:'rw',label:'Read&Write Gold (Texthelp)',icon:'📖',note:'Verify college licence status with IT. Check whether learners have desktop or Chrome extension version.',isRw:true},
+      {key:'rw',label:'Read&Write (Texthelp)',icon:'📖',note:'Available on college devices via <strong>Software Centre</strong> (search in Windows). Staff and learners can also install on personal devices via texthelp.com — sign in with college Microsoft 365 login.',isRw:true},
+      {key:'android',label:'Android',icon:'🤖',note:'Settings paths vary by manufacturer. Samsung paths noted in parentheses where they differ from stock Android.'},
     ];
     sections.forEach(sec=>{
       const secTools=filtered.filter(t=>t.platform===sec.key);
@@ -509,7 +511,7 @@ function renderTools(){
       secTools.forEach(t=>{html+=cardHtml(t);});
     });
   } else {
-    if(curPlat==='rw') html+=sectionHeader('Read&Write Gold (Texthelp)','📖','Verify college licence status with IT before recommending to learners.',true);
+    if(curPlat==='rw') html+=sectionHeader('Read&Write (Texthelp)','📖','Available on college devices via <strong>Software Centre</strong> (search in Windows). Staff and learners can also install on personal devices via <a href='https://www.texthelp.com/products/read-and-write-education/' target='_blank' rel='noopener'>texthelp.com</a> and sign in with their Microsoft 365 college login.',true);
     filtered.forEach(t=>{html+=cardHtml(t);});
   }
   grid.innerHTML=html;
