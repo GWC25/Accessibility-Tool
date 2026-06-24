@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Assistive Technology — Staff Guide · Weston College</title>
+<meta name="description" content="Technical staff guide to assistive technology on Windows, iPad, Microsoft 365, and Read&Write Gold. Includes keyboard shortcuts, feature detail, and pedagogical framing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8; --surface:#FFFFFF; --surface2:#F3F2EE;
+  --border:#D8D6CE; --border-strong:#B0AEA6;
+  --text:#1A1916; --secondary:#3A3834; --muted:#4A4844;
+  --accent:#185FA5; --accent-light:#E6F1FB; --accent-mid:#378ADD; --accent-text:#0C447C;
+  --focus:#0F6E56;
+  --cat-vision-bg:#D4E8F8; --cat-vision:#0C447C;
+  --cat-hearing-bg:#E0DEFE; --cat-hearing:#3C3489;
+  --cat-motor-bg:#F5E4C8; --cat-motor:#633806;
+  --cat-cognitive-bg:#DCF0CC; --cat-cognitive:#27500A;
+  --cat-writing-bg:#F5D8E6; --cat-writing:#72243E;
+  --rw-bg:#FFE8D0; --rw-text:#5C2800;
+  --lwb-bg:#DCF0E6; --lwb-border:#1D9E75; --lwb-text:#0A5C3E;
+  --kbd-bg:#ECEAE4; --kbd-border:#B0AEA6; --kbd-text:#3A3834;
+  --speak-outline:#185FA5;
+  --hover-outline:transparent;
+  --radius:8px; --radius-lg:12px;
+  --font-body:'Atkinson Hyperlegible','Segoe UI',sans-serif;
+  --font-ui:'Inter','Segoe UI',sans-serif;
+  --fs:17px; --lh:1.75; --ls:0em;
+}
+[data-theme="dark"]{
+  --bg:#141412; --surface:#1E1D1A; --surface2:#2A2926;
+  --border:#3A3936; --border-strong:#555450;
+  --text:#F0EFE8; --secondary:#D8D6CE; --muted:#B8B6AE;
+  --accent:#4A9EDD; --accent-light:#0C2240; --accent-mid:#85B7EB; --accent-text:#85B7EB;
+  --focus:#1D9E75;
+  --cat-vision-bg:#0C2240; --cat-vision:#85B7EB;
+  --cat-hearing-bg:#1C1640; --cat-hearing:#AFA9EC;
+  --cat-motor-bg:#2A1E08; --cat-motor:#FAC775;
+  --cat-cognitive-bg:#0E2008; --cat-cognitive:#97C459;
+  --cat-writing-bg:#200C18; --cat-writing:#ED93B1;
+  --rw-bg:#2A1500; --rw-text:#FFCC99;
+  --lwb-bg:#0A2E22; --lwb-border:#1D9E75; --lwb-text:#5DCAA5;
+  --kbd-bg:#2A2926; --kbd-border:#555450; --kbd-text:#D8D6CE;
+  --speak-outline:#4A9EDD;
+}
+[data-theme="high-contrast"]{
+  --bg:#000; --surface:#0A0A0A; --surface2:#111;
+  --border:#888; --border-strong:#BBB;
+  --text:#FFF; --secondary:#EEE; --muted:#DDD;
+  --accent:#99CCFF; --accent-light:#001133; --accent-mid:#99CCFF; --accent-text:#99CCFF;
+  --focus:#FFFF00;
+  --cat-vision-bg:#001133; --cat-vision:#99CCFF;
+  --cat-hearing-bg:#110033; --cat-hearing:#CC99FF;
+  --cat-motor-bg:#221100; --cat-motor:#FFCC66;
+  --cat-cognitive-bg:#001100; --cat-cognitive:#88FF88;
+  --cat-writing-bg:#220011; --cat-writing:#FF99BB;
+  --rw-bg:#1A0A00; --rw-text:#FFCC99;
+  --lwb-bg:#003322; --lwb-border:#00FF99; --lwb-text:#00FF99;
+  --kbd-bg:#222; --kbd-border:#888; --kbd-text:#FFF;
+  --speak-outline:#FF0; --hover-outline:#FF0;
+}
+[data-theme="warm"]{
+  --bg:#F8F4EC; --surface:#FDFAF3; --surface2:#F0EAD8;
+  --border:#D0C8B0; --border-strong:#A89870;
+  --text:#2C1E0A; --secondary:#3D2E14; --muted:#4A3520;
+  --accent:#1A3A8A; --accent-light:#E0E8F8; --accent-mid:#2850B0; --accent-text:#1A3A8A;
+  --focus:#6B4A1A;
+  --lwb-bg:#EAE0C8; --lwb-border:#6B4A1A; --lwb-text:#4A2E08;
+  --kbd-bg:#E8E0CC; --kbd-border:#A89870; --kbd-text:#3D2E14;
+  --speak-outline:#1A3A8A;
+}
+html{font-size:var(--fs);scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:var(--lh);letter-spacing:var(--ls);transition:background .2s,color .2s;min-height:100vh}
+.skip-link{position:absolute;top:-100px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:8px;font-family:var(--font-ui);font-size:.875rem;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+body.enhanced-focus :focus-visible{outline:5px solid var(--focus)!important;outline-offset:4px!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* HEADER */
+.site-header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.header-back{display:flex;align-items:center;gap:.4rem;font-family:var(--font-ui);font-size:.775rem;font-weight:600;color:var(--accent-text);text-decoration:none;white-space:nowrap}
+.header-back svg{width:14px;height:14px}
+.header-title{font-family:var(--font-ui);font-size:.875rem;font-weight:700;color:var(--text)}
+.header-search{flex:1;min-width:180px;position:relative}
+.header-search svg{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--muted);width:16px;height:16px;pointer-events:none}
+.header-search input{width:100%;padding:.5rem 1rem .5rem 2.25rem;border:1.5px solid var(--border-strong);border-radius:100px;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:.875rem}
+.header-search input::placeholder{color:var(--muted)}
+.header-actions{display:flex;gap:.4rem;align-items:center;flex-shrink:0;flex-wrap:wrap}
+.hbtn{background:none;border:1.5px solid var(--border-strong);border-radius:8px;padding:.4rem .7rem;color:var(--secondary);font-family:var(--font-ui);font-size:.775rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:background .15s,color .15s;white-space:nowrap}
+.hbtn:hover{background:var(--surface2);color:var(--text)}
+.hbtn svg{width:15px;height:15px;flex-shrink:0}
+.hbtn.speaking{background:var(--accent);color:#fff;border-color:var(--accent)}
+.view-toggle{display:flex;align-items:center;gap:.25rem}
+.vtbtn{background:none;border:none;cursor:pointer;color:var(--muted);padding:.25rem;border-radius:6px;transition:color .15s}
+.vtbtn:hover{color:var(--text)}
+.vtbtn.active{color:var(--accent);background:var(--accent-light)}
+.vtbtn svg{width:15px;height:15px;display:block}
+
+/* SETTINGS */
+.sett-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-start;justify-content:flex-end}
+.sett-overlay.open{display:flex}
+.sett-panel{background:var(--surface);width:min(400px,100vw);height:100vh;overflow-y:auto;padding:1.5rem;border-left:1px solid var(--border);position:relative}
+.sett-title{font-family:var(--font-ui);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.sett-close{position:absolute;top:.9rem;right:1rem;background:none;border:1px solid var(--border-strong);border-radius:8px;padding:.25rem .6rem;cursor:pointer;color:var(--secondary);font-family:var(--font-ui);font-size:.825rem}
+.sett-close:hover{background:var(--surface2)}
+.sg{margin-bottom:1.25rem;border-top:1px solid var(--border);padding-top:.9rem}
+.sg-label{font-family:var(--font-ui);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:.5rem}
+.sdesc{font-size:.78rem;color:var(--secondary);margin-top:.3rem;line-height:1.5}
+.btn-grp{display:flex;flex-wrap:wrap;gap:.35rem}
+.bchoice{background:var(--surface2);border:1.5px solid var(--border);border-radius:100px;padding:.3rem .8rem;font-family:var(--font-ui);font-size:.775rem;font-weight:500;color:var(--secondary);cursor:pointer;transition:all .15s}
+.bchoice:hover{border-color:var(--accent-mid);color:var(--accent-text)}
+.bchoice.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent-text);font-weight:600}
+.range-row{display:flex;align-items:center;gap:.6rem}
+.range-row input[type=range]{flex:1;accent-color:var(--accent)}
+.rval{font-family:var(--font-ui);font-size:.8rem;font-weight:600;color:var(--text);min-width:2.2rem;text-align:right}
+.srow{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem}
+.srow label{font-size:.875rem;color:var(--text);flex:1}
+.toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.tslider{position:absolute;inset:0;background:var(--border-strong);border-radius:100px;cursor:pointer;transition:background .2s}
+.tslider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s}
+.toggle input:checked+.tslider{background:var(--accent)}
+.toggle input:checked+.tslider::before{transform:translateX(20px)}
+.toggle input:focus-visible+.tslider{outline:3px solid var(--focus);outline-offset:2px;border-radius:100px}
+
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
+body.view-mobile main{max-width:680px;padding:1.25rem 1rem 4rem}
+body.view-mobile .tools-grid{grid-template-columns:1fr}
+
+/* HERO */
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr auto;gap:1.25rem;align-items:center}
+.hero-eyebrow{font-family:var(--font-ui);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-text);margin-bottom:.4rem}
+.hero h1{font-family:var(--font-ui);font-size:clamp(1.2rem,3vw,1.5rem);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:.5rem}
+.hero p{font-size:.875rem;color:var(--secondary);line-height:1.6;max-width:520px}
+.lwb-badge{background:var(--lwb-bg);border:1px solid var(--lwb-border);border-radius:var(--radius-lg);padding:.85rem 1rem;text-align:center;min-width:145px;cursor:pointer;text-decoration:none;display:block;transition:box-shadow .15s}
+.lwb-badge:hover{box-shadow:0 0 0 3px var(--lwb-border)}
+.lwb-badge-label{font-family:var(--font-ui);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--lwb-text);display:block;margin-bottom:.2rem}
+.lwb-badge-title{font-family:var(--font-ui);font-size:.825rem;font-weight:700;color:var(--lwb-text);line-height:1.3}
+
+/* LWB PANEL */
+.lwb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:1rem}
+.lwb-overlay.open{display:flex}
+.lwb-inner{background:var(--surface);border-radius:var(--radius-lg);max-width:660px;width:100%;max-height:90vh;overflow-y:auto;padding:1.75rem;position:relative;border:1px solid var(--border)}
+.lwb-close{position:absolute;top:.9rem;right:1rem;background:none;border:1px solid var(--border-strong);border-radius:8px;padding:.25rem .65rem;cursor:pointer;color:var(--secondary);font-family:var(--font-ui);font-size:.825rem}
+.lwb-eyebrow{font-family:var(--font-ui);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--lwb-text);margin-bottom:.4rem}
+.lwb-inner h2{font-family:var(--font-ui);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.4rem;line-height:1.3}
+.lwb-subtitle{font-size:.875rem;color:var(--secondary);margin-bottom:1.25rem;line-height:1.6;font-style:italic}
+.lwb-vision{background:var(--lwb-bg);border-left:4px solid var(--lwb-border);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin-bottom:1.25rem}
+.lwb-vision p{font-size:.9rem;color:var(--lwb-text);line-height:1.65;font-weight:500}
+.lwb-stitle{font-family:var(--font-ui);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.6rem;margin-top:1rem}
+.lwb-principles{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.75rem}
+.lwb-p{background:var(--surface2);border-radius:8px;padding:.65rem .85rem;border:1px solid var(--border)}
+.lwb-pnum{font-family:var(--font-ui);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--lwb-text);margin-bottom:.1rem}
+.lwb-ptitle{font-weight:700;font-size:.875rem;color:var(--text);margin-bottom:.15rem}
+.lwb-pdesc{font-size:.8rem;color:var(--secondary);line-height:1.55}
+.lwb-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.5rem;margin-bottom:.75rem}
+.lwb-pillar{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.65rem}
+.lwb-pillar-label{font-family:var(--font-ui);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--lwb-text);margin-bottom:.3rem}
+.lwb-pillar p{font-size:.8rem;color:var(--secondary);line-height:1.5}
+.lwb-qft{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.85rem;margin-bottom:.75rem}
+.lwb-qft p{font-size:.85rem;color:var(--secondary);line-height:1.65}
+
+/* PLATFORM TABS */
+.platform-nav{display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
+.ptab{background:var(--surface);border:1.5px solid var(--border);border-radius:100px;padding:.45rem 1.1rem;font-family:var(--font-ui);font-size:.825rem;font-weight:500;color:var(--secondary);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:.3rem;transition:all .15s}
+.ptab:hover{border-color:var(--accent-mid);color:var(--text)}
+.ptab.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+/* FILTERS */
+.filter-bar{display:flex;gap:.35rem;margin-bottom:.85rem;flex-wrap:wrap;align-items:center}
+.filter-label{font-family:var(--font-ui);font-size:.75rem;font-weight:600;color:var(--muted)}
+.fchip{background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:.22rem .7rem;font-family:var(--font-ui);font-size:.73rem;font-weight:500;cursor:pointer;transition:all .15s}
+.fchip.all{color:var(--secondary)}
+.fchip.all.active{background:var(--surface2);border-color:var(--border-strong);color:var(--text);font-weight:600}
+.fchip.vision{color:var(--cat-vision);border-color:var(--cat-vision)}.fchip.vision.active,.fchip.vision:hover{background:var(--cat-vision-bg)}
+.fchip.hearing{color:var(--cat-hearing);border-color:var(--cat-hearing)}.fchip.hearing.active,.fchip.hearing:hover{background:var(--cat-hearing-bg)}
+.fchip.motor{color:var(--cat-motor);border-color:var(--cat-motor)}.fchip.motor.active,.fchip.motor:hover{background:var(--cat-motor-bg)}
+.fchip.cognitive{color:var(--cat-cognitive);border-color:var(--cat-cognitive)}.fchip.cognitive.active,.fchip.cognitive:hover{background:var(--cat-cognitive-bg)}
+.fchip.writing{color:var(--cat-writing);border-color:var(--cat-writing)}.fchip.writing.active,.fchip.writing:hover{background:var(--cat-writing-bg)}
+
+/* RESULTS */
+.results-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;gap:.5rem;flex-wrap:wrap}
+.rcount{font-family:var(--font-ui);font-size:.78rem;color:var(--muted)}
+
+/* GRID */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.9rem}
+
+/* CARD */
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.15rem;display:flex;flex-direction:column;gap:.65rem;transition:border-color .15s;position:relative}
+.tool-card:hover{border-color:var(--border-strong)}
+[data-theme="high-contrast"] .tool-card:hover{outline:3px solid var(--hover-outline);outline-offset:2px}
+.tool-card.speaking-now{outline:4px solid var(--speak-outline)!important;outline-offset:2px}
+.card-header{display:flex;align-items:flex-start;gap:.75rem}
+.card-icon{width:40px;height:40px;border-radius:8px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent-text)}
+.card-icon svg{width:21px;height:21px}
+.rw-card .card-icon{background:var(--rw-bg);color:var(--rw-text)}
+.card-name{font-family:var(--font-ui);font-size:.975rem;font-weight:700;color:var(--text);line-height:1.25}
+.card-shortcut{font-family:var(--font-ui);font-size:.73rem;color:var(--secondary);margin-top:.15rem}
+kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4px;padding:.08em .32em;font-family:var(--font-ui);font-size:.68rem;color:var(--kbd-text)}
+.card-desc{font-size:.865rem;color:var(--secondary);line-height:1.65}
+.card-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.ctag{border-radius:100px;padding:.12rem .55rem;font-family:var(--font-ui);font-size:.68rem;font-weight:700}
+.ctag.vision{background:var(--cat-vision-bg);color:var(--cat-vision)}
+.ctag.hearing{background:var(--cat-hearing-bg);color:var(--cat-hearing)}
+.ctag.motor{background:var(--cat-motor-bg);color:var(--cat-motor)}
+.ctag.cognitive{background:var(--cat-cognitive-bg);color:var(--cat-cognitive)}
+.ctag.writing{background:var(--cat-writing-bg);color:var(--cat-writing)}
+.ctag.rwtag{background:var(--rw-bg);color:var(--rw-text)}
+.lwb-pill{background:var(--lwb-bg);border:1px solid var(--lwb-border);border-radius:100px;padding:.1rem .5rem;font-family:var(--font-ui);font-size:.65rem;font-weight:700;color:var(--lwb-text)}
+.card-where{font-size:.8rem;color:var(--secondary);border-top:1px solid var(--border);padding-top:.55rem;display:flex;align-items:flex-start;gap:.35rem;line-height:1.5}
+.card-where svg{width:13px;height:13px;flex-shrink:0;margin-top:.15rem;color:var(--muted)}
+.card-footer{display:flex;gap:.5rem;margin-top:auto}
+.speak-card-btn{background:var(--accent-light);border:1px solid var(--accent);border-radius:8px;padding:.42rem .7rem;font-family:var(--font-ui);font-size:.75rem;font-weight:600;color:var(--accent-text);cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:all .15s;flex-shrink:0}
+.speak-card-btn:hover{background:var(--accent);color:#fff}
+.speak-card-btn.playing{background:var(--accent);color:#fff}
+.speak-card-btn svg{width:13px;height:13px}
+.yt-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:.35rem;padding:.42rem .7rem;background:none;border:1px solid var(--border-strong);border-radius:8px;font-family:var(--font-ui);font-size:.75rem;font-weight:500;color:var(--secondary);text-decoration:none;transition:all .15s}
+.yt-btn:hover{background:rgba(204,0,0,.07);border-color:#990000;color:#990000}
+.yt-btn svg{width:13px;height:13px}
+/* SECTION HEADER */
+.section-header{display:flex;align-items:center;gap:.65rem;margin:1.5rem 0 .75rem;padding-bottom:.5rem;border-bottom:1.5px solid var(--border);grid-column:1/-1}
+.section-header-icon{width:30px;height:30px;border-radius:8px;background:var(--rw-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem}
+.sh-std .section-header-icon{background:var(--accent-light)}
+.section-header-text h2{font-family:var(--font-ui);font-size:.875rem;font-weight:700;color:var(--text)}
+.section-header-text p{font-size:.775rem;color:var(--secondary);margin-top:.1rem}
+/* NO RESULTS */
+.no-results{text-align:center;padding:3rem 1rem;color:var(--muted);font-size:.9rem;grid-column:1/-1}
+/* TOAST */
+.speak-toast{position:fixed;bottom:1.25rem;right:1.25rem;background:var(--accent);color:#fff;padding:.55rem 1rem;border-radius:100px;font-family:var(--font-ui);font-size:.78rem;font-weight:600;display:none;align-items:center;gap:.5rem;z-index:400;max-width:min(360px,calc(100vw - 2rem))}
+.speak-toast.visible{display:flex}
+.speak-toast button{background:rgba(255,255,255,.25);border:none;border-radius:100px;padding:.2rem .55rem;color:#fff;cursor:pointer;font-size:.72rem;font-weight:600;font-family:var(--font-ui);white-space:nowrap}
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-size:.78rem;color:var(--secondary);font-family:var(--font-ui)}
+.site-footer a{color:var(--accent-text);text-decoration:underline}
+@media(max-width:600px){.hero{grid-template-columns:1fr}.lwb-badge{display:none}.tools-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- SETTINGS -->
+<div class="sett-overlay" id="sett" role="dialog" aria-modal="true" aria-labelledby="sett-title">
+  <div class="sett-panel">
+    <button class="sett-close" id="sett-close" aria-label="Close settings">✕ Close</button>
+    <h2 class="sett-title" id="sett-title">Display preferences</h2>
+    <p class="sdesc" style="margin-bottom:.5rem">Saved to your device.</p>
+    <div class="sg">
+      <span class="sg-label" id="tl">Colour scheme</span>
+      <div class="btn-grp" role="group" aria-labelledby="tl">
+        <button class="bchoice active" data-s="theme" data-v="default">Default</button>
+        <button class="bchoice" data-s="theme" data-v="warm">Warm</button>
+        <button class="bchoice" data-s="theme" data-v="dark">Dark</button>
+        <button class="bchoice" data-s="theme" data-v="high-contrast">High contrast</button>
+      </div>
+    </div>
+    <div class="sg">
+      <span class="sg-label" id="fl">Font</span>
+      <div class="btn-grp" role="group" aria-labelledby="fl">
+        <button class="bchoice active" data-s="font" data-v="default">Atkinson</button>
+        <button class="bchoice" data-s="font" data-v="dyslexic">Dyslexia-friendly</button>
+        <button class="bchoice" data-s="font" data-v="serif">Serif</button>
+        <button class="bchoice" data-s="font" data-v="mono">Monospace</button>
+      </div>
+    </div>
+    <div class="sg">
+      <label for="fs-r" class="sg-label">Text size</label>
+      <div class="range-row"><span style="font-size:.8rem;color:var(--muted)" aria-hidden="true">A</span><input type="range" id="fs-r" min="14" max="26" value="17" step="1"><span style="font-size:1.1rem;color:var(--muted)" aria-hidden="true">A</span><span class="rval" id="fs-d" aria-live="polite">17px</span></div>
+    </div>
+    <div class="sg">
+      <label for="lh-r" class="sg-label">Line spacing</label>
+      <div class="range-row"><input type="range" id="lh-r" min="1.4" max="2.6" value="1.75" step="0.05"><span class="rval" id="lh-d" aria-live="polite">1.75</span></div>
+    </div>
+    <div class="sg">
+      <label for="ls-r" class="sg-label">Letter spacing</label>
+      <div class="range-row"><input type="range" id="ls-r" min="0" max="0.15" value="0" step="0.01"><span class="rval" id="ls-d" aria-live="polite">0em</span></div>
+    </div>
+    <div class="sg">
+      <div class="srow"><label for="mt">Reduce motion</label><label class="toggle"><input type="checkbox" id="mt" role="switch" aria-checked="false"><span class="tslider"></span></label></div>
+      <div class="srow" style="margin-top:.6rem"><label for="ft">Enhanced focus outlines</label><label class="toggle"><input type="checkbox" id="ft" role="switch" aria-checked="false"><span class="tslider"></span></label></div>
+      <div class="srow" style="margin-top:.6rem"><label for="ut">Underline all links</label><label class="toggle"><input type="checkbox" id="ut" role="switch" aria-checked="false"><span class="tslider"></span></label></div>
+    </div>
+    <div class="sg">
+      <span class="sg-label">Read aloud voice</span>
+      <label for="vs" class="sr-only">Select voice</label>
+      <select id="vs" style="width:100%;padding:.45rem;border-radius:8px;border:1.5px solid var(--border-strong);background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:.85rem;margin-bottom:.5rem"><option>Loading voices…</option></select>
+      <label for="sr-r" class="sg-label" style="margin-top:.4rem">Reading speed</label>
+      <div class="range-row"><input type="range" id="sr-r" min="0.5" max="2" value="1" step="0.1"><span class="rval" id="sr-d" aria-live="polite">1×</span></div>
+    </div>
+    <div class="sg"><button class="bchoice" id="reset-btn" style="width:100%;text-align:center;border-radius:8px;padding:.45rem">Reset all to defaults</button></div>
+  </div>
+</div>
+
+<!-- LWB PANEL -->
+<div class="lwb-overlay" id="lwb-overlay" role="dialog" aria-modal="true" aria-labelledby="lwb-title">
+  <div class="lwb-inner">
+    <button class="lwb-close" id="lwb-close" aria-label="Close Learning Without Barriers panel">✕ Close</button>
+    <p class="lwb-eyebrow">Weston College · Digital Inclusion</p>
+    <h2 id="lwb-title">Learning Without Barriers</h2>
+    <p class="lwb-subtitle">How we create the conditions for every learner to participate fully in digital learning, regardless of ability, language, background, connectivity, or prior experience.</p>
+    <div class="lwb-vision"><p>Every learner and member of staff at Weston College can access, engage with, and benefit from digital learning, regardless of ability, language, background, connectivity, or prior experience. That is the standard we are working towards.</p></div>
+    <p class="lwb-stitle">QFT alignment</p>
+    <div class="lwb-qft"><p><strong style="color:var(--text)">Quality First Teaching connection.</strong> When a staff member runs the Accessibility Checker before uploading a resource, they are doing QFT. When they enable Live Captions as default in every Teams session, they are doing QFT. When they show Immersive Reader to every learner at induction rather than only those with a recorded need, they are doing QFT. Learning Without Barriers is a practical QFT framework for the digital age.</p></div>
+    <p class="lwb-stitle">Five principles</p>
+    <div class="lwb-principles">
+      <div class="lwb-p"><p class="lwb-pnum">Principle 1</p><p class="lwb-ptitle">Inclusion by design, not by reaction</p><p class="lwb-pdesc">Built in from the start — curriculum design, IT procurement, resources. WCAG 2.2 AA is the floor, not the ceiling.</p></div>
+      <div class="lwb-p"><p class="lwb-pnum">Principle 2</p><p class="lwb-ptitle">Start with our most excluded learners</p><p class="lwb-pdesc">ESOL and SEND learners face the sharpest digital barriers. Design for them and it works for everyone.</p></div>
+      <div class="lwb-p"><p class="lwb-pnum">Principle 3</p><p class="lwb-ptitle">Everyone is responsible</p><p class="lwb-pdesc">Not one team or role. Teaching staff, IT, student services, and leadership — whole college.</p></div>
+      <div class="lwb-p"><p class="lwb-pnum">Principle 4</p><p class="lwb-ptitle">Quick wins build momentum</p><p class="lwb-pdesc">Immersive Reader, Live Captions, Accessibility Checker, Translator. Free. Available now. No budget needed.</p></div>
+      <div class="lwb-p"><p class="lwb-pnum">Principle 5</p><p class="lwb-ptitle">Learner voice is non-negotiable</p><p class="lwb-pdesc">Learners are genuine co-designers, not a consultation tick-box. Their experience must drive decisions.</p></div>
+    </div>
+    <p class="lwb-stitle">Three pillars</p>
+    <div class="lwb-pillars">
+      <div class="lwb-pillar"><p class="lwb-pillar-label">Foundations</p><p>WCAG 2.2 AA for all uploaded materials. Immersive Reader, Live Captions, and the Accessibility Checker embedded in everyday practice.</p></div>
+      <div class="lwb-pillar"><p class="lwb-pillar-label">Systems and culture</p><p>Consistent Teams standards. Separate CPD pathways for staff and learner digital skills. A Digital Resource Quality Standard for every upload.</p></div>
+      <div class="lwb-pillar"><p class="lwb-pillar-label">Equity and empowerment</p><p>Genuine learner voice. Good Things Foundation partnership. A Student Digital Inclusion Advisory Group with real influence.</p></div>
+    </div>
+    <p style="font-size:.775rem;color:var(--muted);margin-top:.85rem">Consultation document · March 2026 · Graeme Wright, Digital Pedagogy Coach</p>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <a href="index.html" class="header-back" aria-label="Back to home">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Home
+  </a>
+  <span class="header-title">AT Guide — Staff</span>
+  <div class="header-search" role="search">
+    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <label for="search" class="sr-only">Search tools</label>
+    <input type="search" id="search" placeholder="Search tools, shortcuts, features…" autocomplete="off">
+  </div>
+  <div class="header-actions">
+    <div class="view-toggle" role="group" aria-label="View layout">
+      <button class="vtbtn" id="view-mobile" aria-label="Single column view" aria-pressed="false">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>
+      </button>
+      <button class="vtbtn active" id="view-wide" aria-label="Wide grid view" aria-pressed="true">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8,21 12,17 16,21"/></svg>
+      </button>
+    </div>
+    <button class="hbtn" id="speak-all-btn" aria-label="Read all visible tools aloud" aria-pressed="false">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      Read all
+    </button>
+    <button class="hbtn" id="sett-open" aria-label="Open settings" aria-controls="sett" aria-expanded="false">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+  <h2 class="sr-only">Staff guide — assistive technology tools with full technical detail</h2>
+  <div class="hero">
+    <div>
+      <p class="hero-eyebrow">Weston College · Staff guide</p>
+      <h1>Assistive technology — technical reference</h1>
+      <p>Every tool here is free, already installed, and available to every learner. Includes keyboard shortcuts, exact menu paths, and Read&Write Gold guidance. Show these tools at induction — not just to learners with a recorded need.</p>
+    </div>
+    <a href="#" class="lwb-badge" id="lwb-open" aria-haspopup="dialog" aria-label="Open Learning Without Barriers overview">
+      <span class="lwb-badge-label">Part of</span>
+      <span class="lwb-badge-title">Learning Without Barriers</span>
+    </a>
+  </div>
+
+  <div class="platform-nav" role="tablist" aria-label="Filter by platform">
+    <button class="ptab active" role="tab" aria-selected="true" data-p="all">All platforms</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="windows">Windows / Dell</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="ipad">iPad</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="m365">Microsoft 365</button>
+    <button class="ptab" role="tab" aria-selected="false" data-p="rw">Read&amp;Write Gold</button>
+  </div>
+
+  <div class="filter-bar" role="group" aria-label="Filter by need">
+    <span class="filter-label" aria-hidden="true">Filter:</span>
+    <button class="fchip all active" data-c="all">All needs</button>
+    <button class="fchip vision" data-c="vision">Vision</button>
+    <button class="fchip hearing" data-c="hearing">Hearing</button>
+    <button class="fchip motor" data-c="motor">Motor</button>
+    <button class="fchip cognitive" data-c="cognitive">Cognitive</button>
+    <button class="fchip writing" data-c="writing">Writing</button>
+  </div>
+
+  <div class="results-bar">
+    <span class="rcount" id="rcount" aria-live="polite" aria-atomic="true">Loading tools…</span>
+  </div>
+
+  <div class="tools-grid" id="tools-grid" role="list" aria-label="Assistive technology tools"></div>
+</main>
+
+<div class="speak-toast" id="speak-toast">
+  <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+  <span id="toast-label">Reading…</span>
+  <button onclick="stopAll()" aria-label="Stop reading">Stop</button>
+</div>
+
+<footer class="site-footer">
+  <p>Weston College Digital Pedagogy · Part of <strong>Learning Without Barriers</strong> · WCAG 2.2 AA</p>
+  <p style="margin-top:.35rem"><a href="index.html">← Home</a> · <a href="student.html">Learner version</a> · <a href="https://www.texthelp.com/products/read-and-write-education/" target="_blank" rel="noopener">Read&Write</a> · <a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener">WCAG 2.2</a></p>
+</footer>
+
+<script src="tools-data.js"></script>
+<script>
+const ICONS={speaker:'<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',zoom:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>',type:'<polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>',contrast:'<circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/>',palette:'<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',captions:'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 9h4"/><path d="M7 13h8"/>',headphones:'<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',bell:'<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',mic:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>',keyboard:'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 16h10"/>',eye:'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',focus:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',touch:'<path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>',switch:'<rect x="2" y="9" width="20" height="6" rx="3"/><circle cx="16" cy="12" r="2"/>',lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',motion:'<path d="M5 3l14 9-14 9V3z"/>',book:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',edit:'<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>',globe:'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',check:'<polyline points="20 6 9 17 4 12"/>',presentation:'<path d="M2 3h20v13H2z"/><path d="M8 21l4-5 4 5"/>',inbox:'<polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>'};
+
+let curPlat='all',curCat='all',curSearch='';
+let globalSpeaking=false,globalUtterance=null;
+
+function stopAll(){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  globalSpeaking=false;
+  document.querySelectorAll('.tool-card.speaking-now').forEach(c=>c.classList.remove('speaking-now'));
+  document.querySelectorAll('.speak-card-btn.playing').forEach(b=>{b.classList.remove('playing');b.innerHTML=playIcon();});
+  document.getElementById('speak-toast').classList.remove('visible');
+  const sab=document.getElementById('speak-all-btn');
+  sab.classList.remove('speaking');sab.setAttribute('aria-pressed','false');
+}
+
+function speakText(text,card,btn,label){
+  stopAll();
+  if(!window.speechSynthesis){alert('Text-to-speech is not supported in this browser. Try Chrome or Edge.');return;}
+  const u=new SpeechSynthesisUtterance(text);
+  u.rate=parseFloat(document.getElementById('sr-r').value)||1;
+  const voices=window.speechSynthesis.getVoices();
+  const sel=document.getElementById('vs');
+  if(sel.selectedIndex>=0&&voices[sel.selectedIndex]) u.voice=voices[sel.selectedIndex];
+  u.onend=u.onerror=()=>{
+    if(card) card.classList.remove('speaking-now');
+    if(btn){btn.classList.remove('playing');btn.innerHTML=playIcon();}
+    document.getElementById('speak-toast').classList.remove('visible');
+    globalSpeaking=false;
+  };
+  window.speechSynthesis.speak(u);
+  globalSpeaking=true;globalUtterance=u;
+  if(card){card.classList.add('speaking-now');card.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  if(btn){btn.classList.add('playing');btn.innerHTML=stopIcon();}
+  const toast=document.getElementById('speak-toast');
+  document.getElementById('toast-label').textContent=label||'Reading…';
+  toast.classList.add('visible');
+}
+
+function playIcon(){return '<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Listen';}
+function stopIcon(){return '<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Stop';}
+
+function cardHtml(t){
+  const cats=t.cats.map(c=>`<span class="ctag ${c}">${c.charAt(0).toUpperCase()+c.slice(1)}</span>`).join('');
+  const rw=t.platform==='rw'?'<span class="ctag rwtag">Read&Write</span>':'';
+  const lwb=t.lwb?'<span class="lwb-pill">Removes barriers</span>':'';
+  const sc=t.shortcut?`<div class="card-shortcut">Shortcut: <kbd>${t.shortcut}</kbd></div>`:'';
+  const ytUrl='https://www.youtube.com/results?search_query='+encodeURIComponent(t.ytStaff||t.name+' accessibility tutorial');
+  const isRw=t.platform==='rw';
+  return `<article class="tool-card${isRw?' rw-card':''}" role="listitem" aria-label="${t.name}">
+    <div class="card-header">
+      <div class="card-icon" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">${ICONS[t.icon]||ICONS.check}</svg></div>
+      <div><div class="card-name">${t.name}</div>${sc}</div>
+    </div>
+    <p class="card-desc">${t.staffDesc}</p>
+    <div class="card-tags">${cats}${rw}${lwb}</div>
+    <div class="card-where"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${t.staffWhere}</span></div>
+    <div class="card-footer">
+      <button class="speak-card-btn" data-name="${t.name}" aria-label="Read ${t.name} aloud">${playIcon()}</button>
+      <a href="${ytUrl}" target="_blank" rel="noopener noreferrer" class="yt-btn" aria-label="Search YouTube for ${t.name} tutorial (opens in new tab)">
+        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.02V8.98l6.28 3.02-6.28 3.02z"/></svg>
+        Find tutorial
+      </a>
+    </div>
+  </article>`;
+}
+
+function sectionHeader(label,icon,note,isRw){
+  return `<div class="section-header${isRw?'':' sh-std'}">
+    <div class="section-header-icon" aria-hidden="true">${icon}</div>
+    <div class="section-header-text"><h2>${label}</h2>${note?`<p>${note}</p>`:''}</div>
+  </div>`;
+}
+
+function renderTools(){
+  const grid=document.getElementById('tools-grid');
+  const s=curSearch.toLowerCase();
+  const filtered=TOOLS_DATA.filter(t=>{
+    if(curPlat!=='all'&&t.platform!==curPlat) return false;
+    if(curCat!=='all'&&!t.cats.includes(curCat)) return false;
+    if(s){const h=(t.name+' '+t.staffDesc+' '+t.cats.join(' ')+' '+(t.staffWhere||'')+(t.shortcut||'')).toLowerCase();if(!h.includes(s)) return false;}
+    return true;
+  });
+  document.getElementById('rcount').textContent=filtered.length===TOOLS_DATA.length?`${TOOLS_DATA.length} tools`:`${filtered.length} of ${TOOLS_DATA.length} tools`;
+  if(!filtered.length){grid.innerHTML='<div class="no-results" role="status"><p>No tools match — try different terms or clear your filters.</p></div>';return;}
+
+  let html='';
+  if(curPlat==='all'){
+    const sections=[
+      {key:'windows',label:'Windows / Dell',icon:'💻',note:''},
+      {key:'ipad',label:'iPad (iPadOS)',icon:'📱',note:''},
+      {key:'m365',label:'Microsoft 365',icon:'📧',note:''},
+      {key:'rw',label:'Read&Write Gold (Texthelp)',icon:'📖',note:'Verify college licence status with IT. Check whether learners have desktop or Chrome extension version.',isRw:true},
+    ];
+    sections.forEach(sec=>{
+      const secTools=filtered.filter(t=>t.platform===sec.key);
+      if(!secTools.length) return;
+      html+=sectionHeader(sec.label,sec.icon,sec.note,sec.isRw);
+      secTools.forEach(t=>{html+=cardHtml(t);});
+    });
+  } else {
+    if(curPlat==='rw') html+=sectionHeader('Read&Write Gold (Texthelp)','📖','Verify college licence status with IT before recommending to learners.',true);
+    filtered.forEach(t=>{html+=cardHtml(t);});
+  }
+  grid.innerHTML=html;
+
+  grid.querySelectorAll('.speak-card-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const card=btn.closest('.tool-card');
+      if(btn.classList.contains('playing')){stopAll();return;}
+      const name=btn.dataset.name||'';
+      const desc=card.querySelector('.card-desc')?.textContent||'';
+      const where=card.querySelector('.card-where span')?.textContent||'';
+      const sc=card.querySelector('.card-shortcut')?.textContent||'';
+      let text=name+'. '+desc+(where?'. Where to find it: '+where:'')+(sc?'. '+sc:'');
+      speakText(text,card,btn,`Reading: ${name}`);
+    });
+  });
+}
+
+// SEARCH
+document.getElementById('search').addEventListener('input',e=>{curSearch=e.target.value;renderTools();});
+
+// PLATFORM TABS
+document.querySelectorAll('.ptab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.ptab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');curPlat=btn.dataset.p;renderTools();
+}));
+
+// FILTERS
+document.querySelectorAll('.fchip').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.fchip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');curCat=btn.dataset.c;renderTools();
+}));
+
+// SPEAK ALL
+document.getElementById('speak-all-btn').addEventListener('click',()=>{
+  if(globalSpeaking){stopAll();return;}
+  const cards=Array.from(document.querySelectorAll('.tool-card'));
+  if(!cards.length) return;
+  let i=0;
+  const sab=document.getElementById('speak-all-btn');
+  sab.classList.add('speaking');sab.setAttribute('aria-pressed','true');
+  globalSpeaking=true;
+  function next(){
+    if(!globalSpeaking||i>=cards.length){stopAll();return;}
+    const card=cards[i];
+    const name=card.querySelector('.card-name')?.textContent||'';
+    const desc=card.querySelector('.card-desc')?.textContent||'';
+    const where=card.querySelector('.card-where span')?.textContent||'';
+    let text=name+'. '+desc+(where?'. Where: '+where:'');
+    document.querySelectorAll('.tool-card.speaking-now').forEach(c=>c.classList.remove('speaking-now'));
+    card.classList.add('speaking-now');card.scrollIntoView({behavior:'smooth',block:'nearest'});
+    document.getElementById('toast-label').textContent=`Reading: ${name} (${i+1}/${cards.length})`;
+    document.getElementById('speak-toast').classList.add('visible');
+    const u=new SpeechSynthesisUtterance(text);
+    u.rate=parseFloat(document.getElementById('sr-r').value)||1;
+    const voices=window.speechSynthesis.getVoices();const sel=document.getElementById('vs');
+    if(sel.selectedIndex>=0&&voices[sel.selectedIndex]) u.voice=voices[sel.selectedIndex];
+    u.onend=u.onerror=()=>{card.classList.remove('speaking-now');i++;next();};
+    window.speechSynthesis.speak(u);
+  }
+  next();
+});
+
+// SETTINGS
+const settEl=document.getElementById('sett');
+const settOpen=document.getElementById('sett-open');
+const settClose=document.getElementById('sett-close');
+settOpen.addEventListener('click',()=>{settEl.classList.add('open');settOpen.setAttribute('aria-expanded','true');settClose.focus();});
+settClose.addEventListener('click',()=>{settEl.classList.remove('open');settOpen.setAttribute('aria-expanded','false');settOpen.focus();});
+settEl.addEventListener('click',e=>{if(e.target===settEl){settEl.classList.remove('open');settOpen.setAttribute('aria-expanded','false');}});
+
+// LWB
+const lwbOverlay=document.getElementById('lwb-overlay');
+document.getElementById('lwb-open').addEventListener('click',e=>{e.preventDefault();lwbOverlay.classList.add('open');document.getElementById('lwb-close').focus();});
+document.getElementById('lwb-close').addEventListener('click',()=>{lwbOverlay.classList.remove('open');document.getElementById('lwb-open').focus();});
+lwbOverlay.addEventListener('click',e=>{if(e.target===lwbOverlay){lwbOverlay.classList.remove('open');document.getElementById('lwb-open').focus();}});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(settEl.classList.contains('open')){settEl.classList.remove('open');settOpen.setAttribute('aria-expanded','false');settOpen.focus();}
+    if(lwbOverlay.classList.contains('open')){lwbOverlay.classList.remove('open');document.getElementById('lwb-open').focus();}
+  }
+});
+
+const R=document.documentElement;
+function applyTheme(v){R.dataset.theme=v==='default'?'':v;localStorage.setItem('st-theme',v);document.querySelectorAll('[data-s="theme"]').forEach(b=>b.classList.toggle('active',b.dataset.v===v));}
+function applyFont(v){const F={default:"'Atkinson Hyperlegible','Segoe UI',sans-serif",dyslexic:"'Comic Sans MS','Helvetica Neue',sans-serif",serif:"Georgia,'Times New Roman',serif",mono:"'Courier New',Courier,monospace"};R.style.setProperty('--font-body',F[v]||F.default);localStorage.setItem('st-font',v);document.querySelectorAll('[data-s="font"]').forEach(b=>b.classList.toggle('active',b.dataset.v===v));if(v==='dyslexic'){R.style.setProperty('--lh','2');document.getElementById('lh-r').value=2;document.getElementById('lh-d').textContent='2.0';}}
+document.querySelectorAll('[data-s]').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.s==='theme')applyTheme(btn.dataset.v);if(btn.dataset.s==='font')applyFont(btn.dataset.v);}));
+
+function bindSlider(id,did,cssv,sk,fmt){const el=document.getElementById(id),d=document.getElementById(did);el.addEventListener('input',()=>{const v=el.value;R.style.setProperty(cssv,fmt(v));d.textContent=fmt(v);el.setAttribute('aria-valuenow',v);localStorage.setItem(sk,v);});}
+bindSlider('fs-r','fs-d','--fs','st-fs',v=>v+'px');
+bindSlider('lh-r','lh-d','--lh','st-lh',v=>parseFloat(v).toFixed(2));
+bindSlider('ls-r','ls-d','--ls','st-ls',v=>parseFloat(v).toFixed(2)+'em');
+
+function bindToggle(id,sk,on,off){const el=document.getElementById(id);el.addEventListener('change',()=>{el.setAttribute('aria-checked',el.checked.toString());el.checked?on():off();localStorage.setItem(sk,el.checked);});}
+bindToggle('mt','st-rm',()=>{const s=document.createElement('style');s.id='rm';s.textContent='*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}';document.head.appendChild(s);},()=>document.getElementById('rm')?.remove());
+bindToggle('ft','st-fo',()=>document.body.classList.add('enhanced-focus'),()=>document.body.classList.remove('enhanced-focus'));
+bindToggle('ut','st-ul',()=>{const s=document.createElement('style');s.id='ul';s.textContent='a{text-decoration:underline!important;}';document.head.appendChild(s);},()=>document.getElementById('ul')?.remove());
+
+document.getElementById('reset-btn').addEventListener('click',()=>{['st-theme','st-font','st-fs','st-lh','st-ls','st-rm','st-fo','st-ul','st-view'].forEach(k=>localStorage.removeItem(k));location.reload();});
+document.getElementById('sr-r').addEventListener('input',e=>{document.getElementById('sr-d').textContent=parseFloat(e.target.value).toFixed(1)+'×';});
+
+function loadVoices(){const voices=window.speechSynthesis?.getVoices()||[];const sel=document.getElementById('vs');if(voices.length){sel.innerHTML=voices.map((v,i)=>`<option value="${i}">${v.name} (${v.lang})</option>`).join('');const en=voices.findIndex(v=>v.lang.startsWith('en')&&v.localService);if(en>=0)sel.selectedIndex=en;}}
+if(window.speechSynthesis){window.speechSynthesis.onvoiceschanged=loadVoices;loadVoices();}
+
+// VIEW TOGGLE
+document.getElementById('view-mobile').addEventListener('click',function(){document.body.classList.add('view-mobile');this.classList.add('active');this.setAttribute('aria-pressed','true');document.getElementById('view-wide').classList.remove('active');document.getElementById('view-wide').setAttribute('aria-pressed','false');localStorage.setItem('st-view','mobile');});
+document.getElementById('view-wide').addEventListener('click',function(){document.body.classList.remove('view-mobile');this.classList.add('active');this.setAttribute('aria-pressed','true');document.getElementById('view-mobile').classList.remove('active');document.getElementById('view-mobile').setAttribute('aria-pressed','false');localStorage.setItem('st-view','wide');});
+
+function restore(){
+  const theme=localStorage.getItem('st-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'default');
+  const font=localStorage.getItem('st-font')||'default';
+  const fs=localStorage.getItem('st-fs')||'17';
+  const lh=localStorage.getItem('st-lh')||'1.75';
+  const ls=localStorage.getItem('st-ls')||'0';
+  const rm=localStorage.getItem('st-rm')==='true'||window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const fo=localStorage.getItem('st-fo')==='true';
+  const ul=localStorage.getItem('st-ul')==='true';
+  const view=localStorage.getItem('st-view')||'wide';
+  applyTheme(theme);applyFont(font);
+  R.style.setProperty('--fs',fs+'px');document.getElementById('fs-r').value=fs;document.getElementById('fs-d').textContent=fs+'px';
+  R.style.setProperty('--lh',lh);document.getElementById('lh-r').value=lh;document.getElementById('lh-d').textContent=parseFloat(lh).toFixed(2);
+  R.style.setProperty('--ls',parseFloat(ls).toFixed(2)+'em');document.getElementById('ls-r').value=ls;document.getElementById('ls-d').textContent=parseFloat(ls).toFixed(2)+'em';
+  if(rm){document.getElementById('mt').checked=true;document.getElementById('mt').setAttribute('aria-checked','true');document.getElementById('mt').dispatchEvent(new Event('change'));}
+  if(fo){document.getElementById('ft').checked=true;document.getElementById('ft').setAttribute('aria-checked','true');document.getElementById('ft').dispatchEvent(new Event('change'));}
+  if(ul){document.getElementById('ut').checked=true;document.getElementById('ut').setAttribute('aria-checked','true');document.getElementById('ut').dispatchEvent(new Event('change'));}
+  if(view==='mobile') document.getElementById('view-mobile').click();
+}
+restore();
+renderTools();
+</script>
+</body>
+</html>
