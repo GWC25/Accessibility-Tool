@@ -511,7 +511,7 @@ function renderTools(){
       secTools.forEach(t=>{html+=cardHtml(t);});
     });
   } else {
-    if(curPlat==='rw') html+=sectionHeader('Read&Write (Texthelp)','📖','Available on college devices via <strong>Software Centre</strong> (search in Windows). Staff and learners can also install on personal devices via <a href='https://www.texthelp.com/products/read-and-write-education/' target='_blank' rel='noopener'>texthelp.com</a> and sign in with their Microsoft 365 college login.',true);
+    if(curPlat==='rw') html+=sectionHeader('Read&Write (Texthelp)','📖','Available on college devices via <strong>Software Centre</strong> (search in Windows). Staff and learners can also install on personal devices via <a href="https://www.texthelp.com/products/read-and-write-education/" target="_blank" rel="noopener">texthelp.com</a> and sign in with their Microsoft 365 college login.',true);
     filtered.forEach(t=>{html+=cardHtml(t);});
   }
   grid.innerHTML=html;
