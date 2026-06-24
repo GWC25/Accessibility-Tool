@@ -236,14 +236,6 @@ kbd{background:var(--kbd-bg);border:1px solid var(--kbd-border);border-radius:4p
 .speak-toast{position:fixed;bottom:1.25rem;right:1.25rem;background:var(--accent);color:#fff;padding:.55rem 1rem;border-radius:100px;font-family:var(--font-ui);font-size:.78rem;font-weight:600;display:none;align-items:center;gap:.5rem;z-index:400;max-width:min(360px,calc(100vw - 2rem))}
 .speak-toast.visible{display:flex}
 .speak-toast button{background:rgba(255,255,255,.25);border:none;border-radius:100px;padding:.2rem .55rem;color:#fff;cursor:pointer;font-size:.72rem;font-weight:600;font-family:var(--font-ui);white-space:nowrap}
-/* HERO LISTEN BUTTON */
-.hero-listen-btn { margin-top: 0.85rem; }
-/* READ MODE active state on cards */
-body.read-mode .tool-card { cursor: pointer; }
-body.read-mode .tool-card:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
-[data-theme="high-contrast"] body.read-mode .tool-card:hover { outline: 3px solid var(--focus); }
-.read-mode-banner { display: none; background: var(--accent); color: #fff; text-align: center; padding: 0.4rem 1rem; font-family: var(--font-ui); font-size: 0.775rem; font-weight: 600; position: sticky; top: 68px; z-index: 99; }
-body.read-mode .read-mode-banner { display: block; }
 /* LWB listen button */
 .lwb-listen-btn { margin-bottom: 1rem; }
 /* FOOTER */
@@ -360,17 +352,12 @@ body.read-mode .read-mode-banner { display: block; }
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8,21 12,17 16,21"/></svg>
       </button>
     </div>
-    <button class="hbtn" id="speak-all-btn" aria-label="Read mode — off. Activate to read cards on click" aria-pressed="false">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-      Read mode
-    </button>
     <button class="hbtn" id="sett-open" aria-label="Open settings" aria-controls="sett" aria-expanded="false">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       Settings
     </button>
   </div>
 </header>
-<div class="read-mode-banner" id="read-mode-banner" role="status" aria-live="polite">📢 Read mode on — click any card to hear it · double-click to open links · click Read mode again to exit</div>
 
 <main id="main-content">
   <h2 class="sr-only">Staff guide — assistive technology tools with full technical detail</h2>
@@ -440,8 +427,6 @@ function stopAll(){
   document.querySelectorAll('.tool-card.speaking-now').forEach(c=>c.classList.remove('speaking-now'));
   document.querySelectorAll('.speak-card-btn.playing').forEach(b=>{b.classList.remove('playing');b.innerHTML=playIcon();});
   document.getElementById('speak-toast').classList.remove('visible');
-  const sab=document.getElementById('speak-all-btn');
-  sab.classList.remove('speaking');sab.setAttribute('aria-pressed','false');
 }
 
 function speakText(text,card,btn,label){
@@ -534,7 +519,6 @@ function renderTools(){
     filtered.forEach(t=>{html+=cardHtml(t);});
   }
   grid.innerHTML=html;
-  if(typeof attachReadModeListeners === 'function') attachReadModeListeners();
 
   grid.querySelectorAll('.speak-card-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -564,46 +548,6 @@ document.querySelectorAll('.fchip').forEach(btn=>btn.addEventListener('click',()
   document.querySelectorAll('.fchip').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');curCat=btn.dataset.c;renderTools();
 }));
-
-// READ MODE TOGGLE
-let readModeActive = false;
-const sab = document.getElementById('speak-all-btn');
-
-function setReadMode(on) {
-  readModeActive = on;
-  document.body.classList.toggle('read-mode', on);
-  sab.setAttribute('aria-pressed', on.toString());
-  sab.setAttribute('aria-label', on
-    ? 'Read mode — on. Click again to exit'
-    : 'Read mode — off. Activate to read cards on click');
-  sab.innerHTML = on
-    ? `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Exit read mode`
-    : `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Read mode`;
-  if (!on) stopAll();
-}
-
-sab.addEventListener('click', () => setReadMode(!readModeActive));
-
-// Read-mode single-click on tool cards — attach after render
-function attachReadModeListeners() { /* delegation on grid handles this */ }
-
-// READ MODE DELEGATION — handles single/double-click on any card, survives re-renders
-(function() {
-  var grid = document.getElementById('tools-grid');
-  if (!grid) return;
-  grid.addEventListener('click', function(e) {
-    if (!readModeActive) return;
-    var card = e.target.closest('.tool-card');
-    if (!card) return;
-    if (e.detail >= 2) return; // double-click: let through normally
-    var isInteractive = e.target.closest('a, button');
-    if (isInteractive) { e.preventDefault(); e.stopPropagation(); }
-    var btn = card.querySelector('.speak-card-btn');
-    if (!btn) return;
-    if (btn.classList.contains('playing')) { stopAll(); return; }
-    btn.click();
-  });
-})();
 
 
 // SETTINGS
