@@ -338,7 +338,7 @@ body.read-mode .read-mode-banner { display: block; }
     <div class="lwb-note">
       <span>🌱 <strong>Learning Without Barriers</strong> — these tools belong to everyone. You don't need a referral or a diagnosis to use them.</span>
     </div>
-  <button class="speak-card-btn hero-listen-btn" id="hero-listen-btn" aria-label="Listen to introduction" style="margin-top:0.75rem">
+    <button class="speak-card-btn hero-listen-btn" id="hero-listen-btn" aria-label="Listen to introduction" style="margin-top:0.75rem;display:inline-flex">
       <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
       Listen
     </button>
@@ -561,18 +561,25 @@ function setReadMode(on) {
 
 sab.addEventListener('click', () => setReadMode(!readModeActive));
 
-function attachReadModeListeners() {
-  document.querySelectorAll('.tool-card').forEach(card => {
-    card.addEventListener('click', function(e) {
-      if (!readModeActive) return;
-      if (e.detail >= 2) return;
-      const isInteractive = e.target.closest('a, button');
-      if (isInteractive) { e.preventDefault(); e.stopPropagation(); }
-      const btn = card.querySelector('.speak-card-btn');
-      if (btn) { if (btn.classList.contains('playing')) { stopAll(); return; } btn.click(); }
-    });
+function attachReadModeListeners() { /* delegation on grid handles this */ }
+
+// READ MODE DELEGATION — survives re-renders
+(function() {
+  var grid = document.getElementById('tools-grid');
+  if (!grid) return;
+  grid.addEventListener('click', function(e) {
+    if (!readModeActive) return;
+    var card = e.target.closest('.tool-card');
+    if (!card) return;
+    if (e.detail >= 2) return; // double-click passes through
+    var isInteractive = e.target.closest('a, button');
+    if (isInteractive) { e.preventDefault(); e.stopPropagation(); }
+    var btn = card.querySelector('.speak-card-btn');
+    if (!btn) return;
+    if (btn.classList.contains('playing')) { stopAll(); return; }
+    btn.click();
   });
-}
+})();
 
 // SETTINGS
 const settEl=document.getElementById('sett');
