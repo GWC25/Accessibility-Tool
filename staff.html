@@ -379,12 +379,12 @@ body.read-mode .read-mode-banner { display: block; }
       <p class="hero-eyebrow">Weston College · Staff guide</p>
       <h1>Assistive technology — technical reference</h1>
       <p>Every tool here is free, already installed, and available to every learner. Includes keyboard shortcuts, exact menu paths, and Read&Write guidance. Show these tools at induction — not just to learners with a recorded need.</p>
+      <button class="speak-card-btn hero-listen-btn" id="hero-listen-btn" aria-label="Listen to introduction" style="margin-top:0.85rem">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        Listen
+      </button>
     </div>
-    <button class="speak-card-btn hero-listen-btn" id="hero-listen-btn" aria-label="Listen to introduction">
-      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-      Listen
-    </button>
-        <a href="#" class="lwb-badge" id="lwb-open" aria-haspopup="dialog" aria-label="Open Learning Without Barriers overview">
+    <a href="#" class="lwb-badge" id="lwb-open" aria-haspopup="dialog" aria-label="Open Learning Without Barriers overview">
       <span class="lwb-badge-label">Part of</span>
       <span class="lwb-badge-title">Learning Without Barriers</span>
     </a>
@@ -585,27 +585,26 @@ function setReadMode(on) {
 sab.addEventListener('click', () => setReadMode(!readModeActive));
 
 // Read-mode single-click on tool cards — attach after render
-function attachReadModeListeners() {
-  document.querySelectorAll('.tool-card').forEach(card => {
-    card.addEventListener('click', function(e) {
-      if (!readModeActive) return;
-      // Double-click = let links/buttons through normally
-      if (e.detail >= 2) return;
-      // Single click = read the card; prevent default only on non-button/link targets
-      const isInteractive = e.target.closest('a, button');
-      if (isInteractive) {
-        // If it's a button (speak/yt), block on first click and read instead
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      const btn = card.querySelector('.speak-card-btn');
-      if (btn) {
-        if (btn.classList.contains('playing')) { stopAll(); return; }
-        btn.click();
-      }
-    });
+function attachReadModeListeners() { /* delegation on grid handles this */ }
+
+// READ MODE DELEGATION — handles single/double-click on any card, survives re-renders
+(function() {
+  var grid = document.getElementById('tools-grid');
+  if (!grid) return;
+  grid.addEventListener('click', function(e) {
+    if (!readModeActive) return;
+    var card = e.target.closest('.tool-card');
+    if (!card) return;
+    if (e.detail >= 2) return; // double-click: let through normally
+    var isInteractive = e.target.closest('a, button');
+    if (isInteractive) { e.preventDefault(); e.stopPropagation(); }
+    var btn = card.querySelector('.speak-card-btn');
+    if (!btn) return;
+    if (btn.classList.contains('playing')) { stopAll(); return; }
+    btn.click();
   });
-}
+})();
+
 
 // SETTINGS
 const settEl=document.getElementById('sett');
