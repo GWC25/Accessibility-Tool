@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resource Accessibility Check: rubric | Weston College AT Guide</title>
+<meta name="description" content="The rubric used by the Resource Accessibility Check Copilot agent: 13 checks for accessibility (WCAG 2.2 AA) and cognitive load, rating rules, reading distances, word guides and the staff sign-off checklist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:18px}
+:root{--bg:#F7F9F7;--surface:#FFFFFF;--border:#D8D6CE;--text:#1A1916;--muted:#4A4844;--accent:#0A5C3E;--accent-light:#E0F2EA;--focus:#185FA5;--warn-light:#FFF4E5;--warn:#7A4100}
+.skip-link{position:absolute;top:-100px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.875rem;font-weight:600;text-decoration:none;z-index:999}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+body{font-family:'Atkinson Hyperlegible','Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.site-header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.logo{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;color:var(--accent);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.badge{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:.2rem .65rem}
+main{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+h1{font-family:'Inter',sans-serif;font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.2;margin-bottom:.75rem}
+h2{font-family:'Inter',sans-serif;font-size:1.35rem;margin:2.5rem 0 .75rem;padding-top:.5rem;border-top:1px solid var(--border)}
+h3{font-family:'Inter',sans-serif;font-size:1.05rem;margin:1.5rem 0 .5rem}
+p,li{max-width:70ch;margin-bottom:.75rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1rem}
+a{color:var(--accent)}
+.lead{font-size:1.05rem;color:var(--muted)}
+.note{background:var(--accent-light);border:1px solid var(--accent);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0;max-width:70ch}
+.warn{background:var(--warn-light);border:1px solid var(--warn);color:var(--text);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0;max-width:70ch}
+.table-wrap{overflow-x:auto;margin:1rem 0 1.5rem;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.85rem}
+caption{text-align:left;font-family:'Inter',sans-serif;font-weight:600;padding:.75rem 1rem;font-size:.9rem}
+th,td{border-top:1px solid var(--border);padding:.6rem .75rem;text-align:left;vertical-align:top}
+thead th{background:var(--accent-light);font-family:'Inter',sans-serif}
+tbody th{font-family:'Inter',sans-serif;font-weight:600;min-width:9rem}
+nav.toc ol{columns:2;column-gap:2rem}
+@media(max-width:640px){nav.toc ol{columns:1}main{padding:2rem 1rem 3rem}}
+footer{border-top:1px solid var(--border);padding:1.25rem 2rem;text-align:center;font-family:'Inter',sans-serif;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-header">
+  <a href="index.html" class="logo">Weston College AT Guide</a>
+  <span class="badge">WCAG 2.2 AA</span>
+</header>
+<main id="main-content">
+<h1>Resource Accessibility Check: rubric</h1>
+<p class="lead">This is the full rubric used by the Resource Accessibility Check, a Copilot agent that reviews learning resources for staff. It has 13 checks: 7 for accessibility, based on WCAG 2.2 level AA, and 6 for cognitive load, including guidance for neurodivergent learners. Fixed rules turn the scores into red, amber or green ratings.</p>
+<div class="note"><p><strong>Status:</strong> working draft, version 1, 16 November 2026. Thresholds marked as draft are for the Digital Accessibility and Inclusion task force to agree.</p></div>
+
+<nav class="toc" aria-label="On this page">
+<h2 id="contents">Contents</h2>
+<ol>
+<li><a href="#before">Before scoring</a></li>
+<li><a href="#scores">Scores</a></li>
+<li><a href="#accessibility">Accessibility checks A1 to A7</a></li>
+<li><a href="#distances">Reading distances</a></li>
+<li><a href="#cognitive">Cognitive load checks C1 to C6</a></li>
+<li><a href="#words">Word guides</a></li>
+<li><a href="#not-scored">Not scored</a></li>
+<li><a href="#ratings">Rating rules</a></li>
+<li><a href="#measuring">Measuring and file checks</a></li>
+<li><a href="#limits">What the agent cannot check</a></li>
+<li><a href="#personal-data">Personal data</a></li>
+<li><a href="#report">Report format</a></li>
+<li><a href="#sign-off">Staff sign-off checklist</a></li>
+<li><a href="#fixing">Help with fixes</a></li>
+<li><a href="#neurodiversity">Neurodiversity coverage</a></li>
+<li><a href="#sources">Sources</a></li>
+</ol>
+</nav>
+
+<h2 id="before">1. Before scoring</h2>
+<p>Never assume how a resource will be used. If the request does not say, ask this one question and do nothing else until it is answered:</p>
+<p><strong>"How will this be used: printed for display (size and reading distance), printed as a handout, shown on screen, or shared digitally (Teams, VLE, email)?"</strong></p>
+<p>Some checks depend on the use. A resource can pass for one use and fail for another. If the user gives a reading distance at any point, use it.</p>
+
+<h2 id="scores">2. Scores</h2>
+<div class="table-wrap"><table>
+<caption>The four scores used for every check</caption>
+<thead><tr><th scope="col">Score</th><th scope="col">Meaning</th></tr></thead>
+<tbody>
+<tr><th scope="row">Pass</th><td>Meets the standard. No change needed.</td></tr>
+<tr><th scope="row">Partial</th><td>Mostly meets it. A minor issue makes the resource harder to use but does not stop anyone using it.</td></tr>
+<tr><th scope="row">Fail</th><td>Does not meet the standard. Some learners will be unable to get the information, or will find it much harder.</td></tr>
+<tr><th scope="row">N/A</th><td>The check does not apply, for example text alternatives on a poster that is only printed.</td></tr>
+</tbody></table></div>
+<p>Score only from the descriptors on this page. Never score Pass or Partial for something that could not be checked: say it could not be checked.</p>
+
+<h2 id="accessibility">3. Accessibility checks A1 to A7</h2>
+<p>A1, A2 and A6 are <strong>barrier checks</strong>. A Fail on any of them means some learners cannot get the information at all.</p>
+<div class="table-wrap"><table>
+<caption>Accessibility checks, based on WCAG 2.2 level AA</caption>
+<thead><tr><th scope="col">Check</th><th scope="col">Pass</th><th scope="col">Partial</th><th scope="col">Fail</th><th scope="col">How to verify</th></tr></thead>
+<tbody>
+<tr id="a1"><th scope="row">A1 Contrast (barrier)</th><td>All text at least 4.5:1 against its background, or 3:1 for large text (18pt, or 14pt bold). Icons and graphics that carry meaning at least 3:1.</td><td>Small secondary text or a decorative icon between 3:1 and 4.5:1.</td><td>Main text below 4.5:1, or any text or meaningful icon below 3:1.</td><td>WebAIM contrast checker or the Colour Contrast Analyser. Judge each text and background pair separately. Light text on yellow, lime or cyan is almost always below 3:1.</td></tr>
+<tr id="a2"><th scope="row">A2 Colour alone (barrier)</th><td>Every colour-coded meaning also has a label, word, symbol or pattern. If nothing is colour-coded, A2 is Pass.</td><td>A label is present but easy to miss.</td><td>Meaning shown only by colour.</td><td>Print in greyscale or use a colour-blindness simulator. Distracting colour is scored under C6, not A2.</td></tr>
+<tr id="a3"><th scope="row">A3 Readability of text</th><td>One or two plain sans-serif fonts. Sentence case. Body text left-aligned, not justified. Bold, not italics or underline, for emphasis. About 1.5 line spacing in documents.</td><td>Decorative lettering for one heading or slogan only, or a few short labels in capitals.</td><td>Script, handwriting or brush lettering for information. Long passages in capitals, italics or underline. Justified body text.</td><td>Look at every block of text and ask whether it is plain and quick to read.</td></tr>
+<tr id="a4"><th scope="row">A4 Text size for use</th><td>The smallest important text meets about 12pt per metre of reading distance, with 12 to 14pt minimum for handouts and screens.</td><td>Headings meet it; detail text is only readable close up, and that suits the use.</td><td>Important information too small for the reading distance.</td><td>Measure the smallest important text, or print a test copy and read it from the intended distance. See <a href="#distances">reading distances</a>.</td></tr>
+<tr id="a5"><th scope="row">A5 Image and print quality</th><td>For print: at least 150 pixels per inch at print size (A4 needs 1240 by 1754 pixels; A3 needs 1754 by 2480). Text sharp at 200% zoom. For screen use, judge sharpness only, not pixels per inch.</td><td>100 to 150 pixels per inch for print, or minor cropping.</td><td>Below 100 pixels per inch for print, or text visibly blurred.</td><td>Check pixel dimensions against the paper size. Uploaded images with a long side of exactly 2000 pixels have usually been shrunk on upload: ask for the original size before scoring below Pass.</td></tr>
+<tr id="a6"><th scope="row">A6 Text alternatives (barrier)</th><td>Shared digitally with the key information as real text, or with alt text that covers it. N/A if print only.</td><td>Some information is text, but key details such as times or places are only in an image.</td><td>Shared digitally as an image only, or a picture holding key content has no alt text, or a PDF has no text layer (a scan).</td><td>Ask: if the image did not load, would a learner still get the information? Test with Immersive Reader or a screen reader.</td></tr>
+<tr id="a7"><th scope="row">A7 Structure and reading order</th><td>Order and numbering follow the reading order. Real heading styles in documents and a title on every slide. Accessibility Checker clean.</td><td>Minor order issues, or Accessibility Checker warnings only.</td><td>Numbering contradicts the layout, no heading structure, a slide with no title, or Accessibility Checker errors.</td><td>For an image, judge the visible order only (being an image is scored under A6). For a Word or PowerPoint file, inspect the file. Run Review, then Check Accessibility.</td></tr>
+</tbody></table></div>
+
+<h2 id="distances">4. Reading distances</h2>
+<p>Use the distance the user gives. If none is given, assume:</p>
+<div class="table-wrap"><table>
+<caption>Default reading distances and minimum text size (draft)</caption>
+<thead><tr><th scope="col">Where it is used</th><th scope="col">Assumed distance</th><th scope="col">Minimum size for important text</th></tr></thead>
+<tbody>
+<tr><th scope="row">Classroom display</th><td>4 metres</td><td>About 48pt</td></tr>
+<tr><th scope="row">Corridor display</th><td>2 metres</td><td>About 24pt</td></tr>
+<tr><th scope="row">Noticeboard or reference sheet</th><td>1 metre</td><td>About 12pt</td></tr>
+<tr><th scope="row">Handout or screen</th><td>Close up</td><td>12 to 14pt</td></tr>
+</tbody></table></div>
+
+<h2 id="cognitive">5. Cognitive load checks C1 to C6</h2>
+<div class="table-wrap"><table>
+<caption>Cognitive load checks, including neurodiversity guidance</caption>
+<thead><tr><th scope="col">Check</th><th scope="col">Pass</th><th scope="col">Partial</th><th scope="col">Fail</th><th scope="col">How to verify</th></tr></thead>
+<tbody>
+<tr id="c1"><th scope="row">C1 Clear purpose</th><td>A reader can tell what it is for and what to do within about 5 seconds. The most important information is the most prominent.</td><td>Purpose clear but the key information is not the most prominent thing, or the title does not name the topic.</td><td>Purpose or action unclear, or decoration more prominent than the content.</td><td>Show it to a colleague for 5 seconds, then ask what it is about and what they should do.</td></tr>
+<tr id="c2"><th scope="row">C2 Amount and distraction</th><td>Within the <a href="#words">word guide</a>. At most one slogan. At most two fonts.</td><td>Up to 1.5 times the word guide, two or three slogans, or some decoration that adds nothing.</td><td>Over 1.5 times the word guide, four or more slogans, or decoration takes up much of the space.</td><td>Count the words and slogans. For each image or colour, ask what it tells the reader.</td></tr>
+<tr id="c3"><th scope="row">C3 Consistency and repetition</th><td>Each point made once. Terms match related college materials.</td><td>One repeat, or minor wording differences.</td><td>Several repeats, or the resource contradicts itself or related materials. A contradiction is counted here only, not again under C4.</td><td>Mark anything said twice. Compare with the matching staff, learner or policy version.</td></tr>
+<tr id="c4"><th scope="row">C4 Completeness and plain language</th><td>What, when, where and how. What happens next and who to ask, where relevant. Jargon and abbreviations explained.</td><td>One minor detail or term missing.</td><td>Key details missing, or codes a reader needs left unexplained.</td><td>Ask: could a new learner, or a new member of staff, act on this with no other information? This checks the resource, not the teaching.</td></tr>
+<tr id="c5"><th scope="row">C5 Literal and predictable language</th><td>No idioms, figures of speech, sarcasm or double negatives. Instructions say what, how and by when. Steps numbered.</td><td>One idiom or vague phrase, or clear steps written as a paragraph (never a Fail on its own).</td><td>Several idioms, vague instructions, or a misleading double negative.</td><td>Read it word by word, taking every phrase literally. Quote every idiom and double negative found.</td></tr>
+<tr id="c6"><th scope="row">C6 Sensory comfort</th><td>Calm colours. Text on a plain background. Nothing flashes.</td><td>One busy area or harsh colour pair away from the main text, or animation that cannot be paused.</td><td>Text over a busy image, pattern or gradient. Harsh clashing colours throughout. Anything flashing more than 3 times a second.</td><td>Look at it for 10 seconds: does anything pull the eye away? Play every animation, GIF and video yourself (see <a href="#limits">what the agent cannot check</a>).</td></tr>
+</tbody></table></div>
+
+<h2 id="words">6. Word guides</h2>
+<div class="table-wrap"><table>
+<caption>Word guides for C2 (draft)</caption>
+<thead><tr><th scope="col">Resource</th><th scope="col">Word guide</th><th scope="col">Partial</th><th scope="col">Fail</th></tr></thead>
+<tbody>
+<tr><th scope="row">Display poster</th><td>100 words</td><td>Up to 150</td><td>Over 150</td></tr>
+<tr><th scope="row">Close-up reference sheet</th><td>300 words</td><td>Up to 450</td><td>Over 450</td></tr>
+<tr><th scope="row">Slide presented live</th><td>40 words per slide</td><td>Up to 60</td><td>Over 60</td></tr>
+<tr><th scope="row">Slide read alone, for example on the VLE</th><td>75 words per slide, one idea per slide</td><td>Up to 112</td><td>Over 112</td></tr>
+</tbody></table></div>
+
+<h2 id="not-scored">7. Not scored</h2>
+<p>Cream backgrounds, coloured overlays and dyslexia fonts are not scored. Controlled studies have not shown that coloured overlays improve reading. Treat these as personal preferences: share an editable copy so each learner can change colours, font and spacing, for example in Immersive Reader.</p>
+
+<h2 id="ratings">8. Rating rules</h2>
+<p>Each resource gets two ratings. They are worked out from the scores by these rules, not by overall impression. N/A scores are left out. Before each rating, count its Fails and Partials and show the count, for example "Cognitive load: RED (3 Fails: C2, C5, C6)".</p>
+<div class="table-wrap"><table>
+<caption>How scores become ratings</caption>
+<thead><tr><th scope="col">Rating</th><th scope="col">Accessibility (A1 to A7)</th><th scope="col">Cognitive load (C1 to C6)</th></tr></thead>
+<tbody>
+<tr><th scope="row">RED</th><td>Any Fail on A1, A2 or A6, or 3 or more Fails.</td><td>2 or more Fails; or a C3 Fail on safety, assessment or deadline information; or a C6 Fail for flashing.</td></tr>
+<tr><th scope="row">AMBER</th><td>Any other Fail, or 2 or more Partials.</td><td>1 Fail, or 2 or more Partials.</td></tr>
+<tr><th scope="row">GREEN</th><td>No Fails and at most 1 Partial.</td><td>No Fails and at most 1 Partial.</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Red:</strong> fix before using or sharing. Some learners cannot use it as it stands.</li>
+<li><strong>Amber:</strong> usable, but make the changes when you next update it, or sooner if it is going to a large audience.</li>
+<li><strong>Green:</strong> ready to use. Act on any Partial if it is quick.</li>
+</ul>
+
+<h2 id="measuring">9. Measuring and file checks</h2>
+<ul>
+<li>Label any figure judged from a picture as an estimate.</li>
+<li>When the text and background colour codes are known, from the user or from the file, calculate contrast exactly. Use text colours, not border or line colours.</li>
+<li>For a Word or PowerPoint file, inspect the file itself: alt text on every picture, a title on every slide (a placeholder of type title or ctrTitle, whatever the shape is named) or real heading styles in documents, and the order of shapes on each slide. A picture holding key content with no alt text is an A6 Fail.</li>
+<li>For a PDF, check whether it has a text layer. A scanned PDF with no text fails A6 and A7, even if the words can be read on screen.</li>
+</ul>
+
+<h2 id="limits">10. What the agent cannot check</h2>
+<div class="warn"><p><strong>The agent cannot detect animation or flashing.</strong> It sees still images only. It must never report that no animation or flashing was found. If a file contains any picture, GIF or video, the report must tell the user to check it for flashing themselves. Remove animated GIFs from resources unless they are essential.</p></div>
+<ul>
+<li>Exact print size and resolution of large uploaded images, which may be shrunk on upload.</li>
+<li>How the resource behaves in the VLE or in Teams.</li>
+<li>Whether facts, dates and procedures are correct. It checks how information is presented, not whether it is right.</li>
+</ul>
+
+<h2 id="personal-data">11. Personal data</h2>
+<p>This follows the college Staff AI User Policy, where Copilot on the college licence is a sanctioned tool.</p>
+<ul>
+<li>Learner first names are allowed, but placeholders such as "Learner A" are better where possible.</li>
+<li>Do not review resources that show support needs, EHCP or access arrangements, health details, or learner work that has not been anonymised. Ask for these to be removed first, and never repeat them.</li>
+<li>Support needs and access arrangements must never appear on displayed resources, whatever tool is used.</li>
+</ul>
+
+<h2 id="report">12. Report format</h2>
+<ol>
+<li><strong>Resource and use</strong>, in one line.</li>
+<li><strong>Ratings:</strong> accessibility and cognitive load, each RED, AMBER or GREEN with the count and one sentence on why. Always written in words, never colour or emoji alone.</li>
+<li><strong>What works well:</strong> 2 to 4 points.</li>
+<li><strong>Check table:</strong> all 13 checks with the score, the evidence and the fix.</li>
+<li><strong>Top fixes:</strong> up to three, Fails first, then Partials. If there are none, "No changes needed".</li>
+<li><strong>Check these yourself:</strong> estimated findings, anything that could not be checked, and the tool to confirm each.</li>
+<li><strong>Before you share:</strong> the sign-off checklist below.</li>
+</ol>
+<p>Every report ends: "AI-assisted review. Your professional judgement decides what is shared."</p>
+
+<h2 id="sign-off">13. Staff sign-off checklist</h2>
+<p>The member of staff completes this before using or sharing the resource:</p>
+<ul>
+<li>I have read the findings and noted any disagreement.</li>
+<li>I have checked contrast with a checker.</li>
+<li>I have run the Accessibility Checker.</li>
+<li>Key information is in the post or document as text.</li>
+<li>I have fixed every Fail on A1, A2 and A6.</li>
+<li>I have checked print size and resolution.</li>
+<li>Learners can get an editable copy.</li>
+</ul>
+
+<h2 id="fixing">14. Help with fixes</h2>
+<p>When asked, the agent may rewrite text, draft alt text, write a text version of a post, suggest colours with calculated contrast, and give steps for PowerPoint, Word and Teams. It cannot edit files. Any rewrite must keep the original meaning and facts exactly: never change dates, times, places or what is offered, and never add information that is not in the original. It does not judge teaching content or quality.</p>
+
+<h2 id="neurodiversity">15. Neurodiversity coverage</h2>
+<div class="table-wrap"><table>
+<caption>Which checks cover which learners</caption>
+<thead><tr><th scope="col">Learners</th><th scope="col">Main recommendations</th><th scope="col">Scored by</th></tr></thead>
+<tbody>
+<tr><th scope="row">Dyslexic</th><td>Sans-serif font, 12 to 14pt body text, left-aligned and not justified, bold not italics, line spacing about 1.5, short sentences, images and flow charts to support text, abbreviations explained</td><td>A3, A4, C2, C4, C5</td></tr>
+<tr><th scope="row">Autistic</th><td>Calm, simple colours; plain, literal English; short sentences and bullets; simple, consistent layouts; no idioms; no walls of text</td><td>C1, C2, C3, C5, C6</td></tr>
+<tr><th scope="row">ADHD</th><td>Purpose stated first, short chunks, numbered steps, concrete instructions with deadlines, little distraction</td><td>C1, C2, C4, C5, C6</td></tr>
+<tr><th scope="row">Anxiety</th><td>Important information made clear, what happens next explained, help easy to find</td><td>C1, C4</td></tr>
+<tr><th scope="row">Learning disabilities and other cognitive needs</th><td>Familiar symbols and terms, clear layout and headings, nothing that relies on memory, no distractions</td><td>A7, C1, C3, C4, C6</td></tr>
+</tbody></table></div>
+
+<h2 id="sources">16. Sources</h2>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG22/quickref/">W3C: How to Meet WCAG 2.2</a></li>
+<li><a href="https://www.w3.org/TR/coga-usable/">W3C: Making Content Usable for People with Cognitive and Learning Disabilities</a></li>
+<li><a href="https://cdn.bdadyslexia.org.uk/uploads/documents/Advice/style-guide/BDA-Style-Guide-2023.pdf">British Dyslexia Association: Dyslexia Style Guide 2023 (PDF)</a></li>
+<li><a href="https://ukhomeoffice.github.io/accessibility-posters/autism">Home Office: designing for users on the autistic spectrum</a></li>
+<li><a href="https://ukhomeoffice.github.io/accessibility-posters/anxiety">Home Office: designing for users with anxiety</a></li>
+<li><a href="https://vu.nl/en/employee/didactics/how-to-support-students-with-adhd">VU Amsterdam: how to support students with ADHD</a></li>
+<li><a href="https://www.psy.ox.ac.uk/publications/385403">Henderson, Tsogka and Snowling (2013): coloured overlays and reading</a></li>
+<li><a href="https://doi.org/10.1016/j.ridd.2021.104065">Stagg and Kiss (2021): letter spacing, coloured overlays and dyslexia</a></li>
+<li><a href="https://webaim.org/resources/contrastchecker/">WebAIM contrast checker</a></li>
+</ul>
+</main>
+<footer>
+  <p>Weston College Digital Pedagogy. <a href="index.html">Assistive Technology Guide home</a></p>
+</footer>
+</body>
+</html>
